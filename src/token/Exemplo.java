@@ -19,17 +19,7 @@ public class Exemplo {
         Numero in = new Numero (listaA);
         in.verifNumero(a);
         
-        if (in.getListaNumeros().size() > 0){
-            System.out.println("TEM NUMERO");
-            
-                System.out.println(in.getListaNumeros());
-            
-        } else{
-            System.out.println("NÃO TEM NÚMERO");
-            
-        }
-        
-        
+        System.out.println("O NÚMERO QUE EU BOTEI É " + in.iseValido()); //nesse teste, se false, não reconhece como número
     }
     
     
