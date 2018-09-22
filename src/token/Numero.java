@@ -1,4 +1,3 @@
-
 package token;
 import java.util.*;
 /**
@@ -28,7 +27,7 @@ public class Numero {
         
         eValido = true; //variável para verificar se a string é válida
         
-        int [] estado = {0,1,2,4,5,6}; //conjunto de estados do autômato
+         //conjunto de estados do autômato
         int estadoAtual = 0;
                 
         while (i < caracteres.length){

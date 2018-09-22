@@ -13,7 +13,7 @@ public class Separador {
     String reg = "\\s|,|;|\\+|-|\\*|\\++|--|!=|==|<|<=|>|>=|=|!|&&|"
                + "\\Q||\\E|//|\\{|\\/\\*|\\}|\\[|\\]"; //tá indo até operadores lógicos 
                //|//|/*|\\Q()[]{}\\E
-    Delimitadores delim = new Delimitadores();
+    ProcuraDelimitadores delim = new ProcuraDelimitadores();
      
     public ArrayList <String> retornaListaTokens (ArrayList <String> listaLinhas){
       

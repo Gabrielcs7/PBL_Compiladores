@@ -11,7 +11,7 @@ import java.io.IOException;
  *
  * @author Gabriel
  */
-public class Exemplo {
+public class Main {
     public static void main(String[] args) {
        
        ArrayList <String> listaLinhas = new ArrayList ();
