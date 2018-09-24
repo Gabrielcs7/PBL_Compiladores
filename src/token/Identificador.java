@@ -888,7 +888,7 @@ public class Identificador {
                     break;
                 }
             } 
-                
+            i++;    
         }
     }
     
