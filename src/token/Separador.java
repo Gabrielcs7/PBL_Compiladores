@@ -7,92 +7,112 @@ import java.util.ArrayList;
  */
 public class Separador {
     
-    String tok [] = null;
-    String tok2 [] = null;
-    ArrayList <String> listaTokens = new ArrayList ();
+    char[] caracteres = null;
+    char tok2 [] = null;
+    ArrayList <Token> listaTokens = new ArrayList ();
     String reg = "\\s|,|;|\\+|-|\\*|\\++|--|!=|==|<|<=|>|>=|=|!|&&|"
-               + "\\Q||\\E|//|\\{|\\/\\*|\\}|\\[|\\]"; //tá indo até operadores lógicos 
+               + "\\Q||\\E|//|\\{|\\/\\*|\\}|\\[|\\]"; 
                //|//|/*|\\Q()[]{}\\E
     ProcuraDelimitadores delim = new ProcuraDelimitadores();
      
-    public ArrayList <String> retornaListaTokens (ArrayList <String> listaLinhas){
+    public ArrayList <Token> retornaListaTokens (ArrayList <String> listaLinhas){
       
       int h = 0;
+      int i = 0;
+      String aux = "";
+      String auxD = "";
+      String auxND = "";
+      Token tok;
+      int estado = 0;
+      
         while (h < listaLinhas.size()){
             System.out.println("elementos da lista: " + listaLinhas.get(h));
-            
-            tok = listaLinhas.get(h).split(reg);
-            tok2 = listaLinhas.get(h).split("|");
-            
-            for (int a = 0; a < tok.length; a++){
-                listaTokens.add(tok[a]);
+            estado = 1;
+            auxD = "";
+            auxND = "";
+            i = 0;
+            caracteres = listaLinhas.get(h).toCharArray();
+            System.out.println(caracteres.length);
+            while (i < caracteres.length){
+               if (estado == 0){
+                    if (delim.procuraDelimi(caracteres[i])){
+                       estado = 1;
+                       tok = new Token (auxND, i, h);
+                       listaTokens.add(tok);
+                       auxND = "";
+                   } else if (!delim.procuraDelimi(caracteres[i])){
+                       auxND = auxND.concat (Character.toString(caracteres[i]));
+                       estado = 0;
+                       if (i == caracteres.length - 1){
+                            tok = new Token (auxND, i, h);
+                            listaTokens.add(tok);
+                        }
+                   }
+               } else if (estado == 1){
+                   if (delim.procuraDelimi(caracteres[i])){
+                       estado = 1;
+                   } else if (!delim.procuraDelimi(caracteres[i])){
+                       estado = 0;
+                       auxND = auxND.concat(Character.toString(caracteres[i]));
+                       if (i == caracteres.length - 1){
+                            tok = new Token (auxND, (i+1), h);
+                            listaTokens.add(tok);
+                        }
+                   }
+               }
+                i++;
             }
             
-            for (int a = 0; a < tok2.length; a++){
-                if (delim.procuraDelimi(tok2[a])){
-                    listaTokens.add(tok2[a]);
-                } 
-                //tratamento das strings com duas ocorrências: //, ||, ++, --, ==,<=,>=, /*
-                if(tok2[a].equals("|")){ 
-                    if (a+1 < tok2.length){
-                        if (tok2[a+1].equals("|")){
-                            listaTokens.add(tok2[a].concat("|"));
+            i = 0;
+            estado = 1;
+            while (i < caracteres.length){
+               if (estado == 0){
+                    if (!delim.procuraNaoDelimi(caracteres[i])){
+                       estado = 1;
+                       tok = new Token (auxD, i, h);
+                       listaTokens.add(tok);
+                       auxD = "";
+                   } else if (delim.procuraNaoDelimi(caracteres[i])){
+                       auxD = auxD.concat (Character.toString(caracteres[i]));
+                       estado = 0;
+                       if (i == caracteres.length - 1){
+                            tok = new Token (auxD, i, h);
+                            listaTokens.add(tok);
                         }
-                    }
-                } else if (tok2[a].equals("/")){
-                    if (a+1 < tok2.length){
-                        if (tok2[a+1].equals("/")){
-                            listaTokens.add(tok2[a].concat("/"));
-                        } else if (tok2[a+1].equals("*")){
-                            listaTokens.add(tok2[a].concat("*"));
-                            tok2[a+1] = " ";
+                   }
+               } else if (estado == 1){
+                   if (!delim.procuraNaoDelimi(caracteres[i])){
+                       estado = 1;
+                   } else if (delim.procuraNaoDelimi(caracteres[i])){
+                       estado = 0;
+                       auxD = auxD.concat(Character.toString(caracteres[i]));
+                       if (i == caracteres.length - 1){
+                            tok = new Token (auxD, i+1, h);
+                            listaTokens.add(tok);
                         }
-                    } else{
-                        listaTokens.add(tok2[a]);
-                    }
-                } else if (tok2[a].equals("+")){
-                    if (a+1 < tok2.length){
-                        if (tok2[a+1].equals("+")){
-                            listaTokens.add(tok2[a].concat("+"));
-                        }
-                    }
-                } else if (tok2[a].equals("-")){
-                    if (a+1 < tok2.length){
-                        if (tok2[a+1].equals("-")){
-                            listaTokens.add(tok2[a].concat("-"));
-                        }
-                    }
-                } else if (tok2[a].equals("=")){
-                    if (a+1 < tok2.length){
-                        if (tok2[a+1].equals("=")){
-                            listaTokens.add(tok2[a].concat("="));
-                        }
-                    }
-                } else if (tok2[a].equals("<")){
-                    if (a+1 < tok2.length){
-                        if (tok2[a+1].equals("=")){
-                            listaTokens.add(tok2[a].concat("="));
-                        }
-                    }
-                } else if (tok2[a].equals(">")){
-                    if (a+1 < tok2.length){
-                        if (tok2[a+1].equals("=")){
-                            listaTokens.add(tok2[a].concat("="));
-                        }
-                    } 
-                } 
+                   }
+               }
+                i++;
             }
             
             h++;
-        }    
+        }
+        
+        
         h = 0;
         System.out.println("\n\n Lista de TOkens:\n");
         while (h < listaTokens.size()){
-            System.out.println(listaTokens.get(h));
+            System.out.println(listaTokens.get(h).getNome());
+            System.out.println(listaTokens.get(h).getPos());
             h++;
         }
-        System.out.println("O tamanho é " + listaTokens.size());
+        
+        
+        
       return listaTokens;
         
     }
+    
+    
+    
 }

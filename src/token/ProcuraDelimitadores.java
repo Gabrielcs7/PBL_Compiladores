@@ -5,12 +5,26 @@ package token;
  */
 public class ProcuraDelimitadores {
     
-    public boolean procuraDelimi(String s){
+    public boolean procuraDelimi(char s){
         //compara com todos os operadores do alfabeto
-        if (s.equals(",") || s.equals(";") || s.equals("+") || s.equals("-")|| s.equals("*")|| 
-             s.equals("<")|| s.equals(">")||  s.equals("=")|| s.equals("!")||
-               s.equals("(")|| s.equals(")")|| s.equals("{")|| s.equals("}")||
-                s.equals("]")|| s.equals("[")){
+        if (s == ',' || s == ';' || s == '+' || s == '-' || s == '*' || 
+             s == '<' || s == '>' ||  s == '='|| s == '!'||
+               s == '('|| s == ')'|| s == '{'|| s == '}'||
+                s == ']'|| s == '[' || s == '|' || s == ' ' || s == '!' || s== '/'){
+            return true;
+        } else{
+            return false;
+        }
+            
+    }
+    
+    
+    public boolean procuraNaoDelimi(char s){
+        //compara com todos os operadores do alfabeto
+        if (s == ',' || s == ';' || s == '+' || s == '-' || s == '*' || 
+             s == '<' || s == '>' ||  s == '='|| s == '!'||
+               s == '('|| s == ')'|| s == '{'|| s == '}'||
+                s == ']'|| s == '[' || s == '|' || s == '!' || s=='/'){
             return true;
         } else{
             return false;

@@ -24,7 +24,7 @@ public class Teste {
         
         Delimitadores o = new Delimitadores ();
         
-        System.out.println(o.eDelimitador(nome));
+       // System.out.println(o.eDelimitador(nome));
         
     }
 }

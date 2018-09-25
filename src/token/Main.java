@@ -44,11 +44,10 @@ public class Main {
         System.err.printf("Erro na abertura do arquivo: %s.\n",
           e.getMessage());
     }
-    
+        System.out.println("A lista é:" + listaLinhas);
         Separador s = new Separador ();
         s.retornaListaTokens(listaLinhas);
         
-        System.out.print(listaLinhas);
     System.out.println();
         
         
