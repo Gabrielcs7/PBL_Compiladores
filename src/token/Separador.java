@@ -26,13 +26,13 @@ public class Separador {
       int estado = 0;
       
         while (h < listaLinhas.size()){
-            System.out.println("elementos da lista: " + listaLinhas.get(h));
+            
             estado = 1;
             auxD = "";
             auxND = "";
             i = 0;
             caracteres = listaLinhas.get(h).toCharArray();
-            System.out.println(caracteres.length);
+            
             while (i < caracteres.length){
                if (estado == 0){
                     if (delim.procuraDelimi(caracteres[i])){
@@ -107,7 +107,16 @@ public class Separador {
             h++;
         }
         
+        System.out.println("AGORA VOU PASSAR PELO PROCURADOR DE COMENT\n");
         
+        Comentario c = new Comentario ();
+        h = 0;
+        while (h < c.removeComent(listaTokens).size()){
+            System.out.println(listaTokens.get(h).getNome());
+            h++;
+        }
+        System.out.println("\n");
+        System.out.println(c.eComentario());
         
       return listaTokens;
         

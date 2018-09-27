@@ -20,10 +20,9 @@ public class Main {
        
        Scanner ler = new Scanner(System.in);
  
-    System.out.printf("Informe o nome de arquivo texto:\n");
+    System.out.printf("Informe o nome de arquivo:\n");
     String nome = ler.nextLine();
  
-    System.out.printf("\nConteúdo do arquivo texto:\n");
     try {
       FileReader arq = new FileReader(nome);
       BufferedReader lerArq = new BufferedReader(arq);
@@ -32,7 +31,6 @@ public class Main {
       
       while (linha != null) {
         
-        //System.out.printf("%s\n", linha);
         listaLinhas.add(linha);
                 
         linha = lerArq.readLine(); // lê da segunda até a última linha
@@ -44,7 +42,7 @@ public class Main {
         System.err.printf("Erro na abertura do arquivo: %s.\n",
           e.getMessage());
     }
-        System.out.println("A lista é:" + listaLinhas);
+        
         Separador s = new Separador ();
         s.retornaListaTokens(listaLinhas);
         

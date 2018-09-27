@@ -18,7 +18,7 @@ public class Numero {
         return listaNumeros;
     }
     
-     //NÃO TESTA COM ESPAÇO, PQ ELE BUGA. SÓ DÁ PRA TESTAR ESPAÇO COM O ARQUIVO MESMO
+     
     public void verifNumero (String a){
         
         char [] caracteres = a.toCharArray(); //quebra em um char de arrays
@@ -43,8 +43,8 @@ public class Numero {
                     break;
                 }   
             } else if (estadoAtual == 1){
-                //espaço tá bugado pq o java considera espaço como delimitador de strings, aí tem que ver como será
-                if (caracteres[i] == ' '){ //aqui eu verifico espaço, mas tá bugado, então deixa aí para depois mudar
+                
+                if (caracteres[i] == ' '){ 
                     estadoAtual = 2;
                 } else if (Character.isDigit(caracteres[i])){
                     estadoAtual = 3;
