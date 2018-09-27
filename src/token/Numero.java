@@ -19,7 +19,7 @@ public class Numero {
     }
     
      
-    public void verifNumero (String a){
+    public boolean verifNumero (String a){
         
         char [] caracteres = a.toCharArray(); //quebra em um char de arrays
                
@@ -93,14 +93,9 @@ public class Numero {
            eValido = false;
         }
         //os estados só serão verdadeiros se forem os estados atuais da leitura
-        
+        return eValido;
     }
 
-    public boolean iseValido() {
-        return eValido; // método só para teste
-    }
-    
-    
     
     
 }

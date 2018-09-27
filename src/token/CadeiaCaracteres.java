@@ -28,11 +28,11 @@ public class CadeiaCaracteres {
         eValido = false;
     }
     
-    public void isCadeia (String a){
+    public boolean isCadeia (String a){
         
         char [] caracteres = a.toCharArray();
         
-        alteraEValidoFalse();
+        eValido = false;
         
         int i = 0;
         int estadoAtual = 0;
@@ -48,17 +48,20 @@ public class CadeiaCaracteres {
                 case 1:
                     if (caracteres[i] == '"'){
                         estadoAtual = 2;
-                        alteraEValidoTrue();
+                        eValido = true;
                     }
                     break;
                 case 2:
+                    eValido = false;
                     break;
                 default:
+                    eValido = false;
                     break;
             }
             
             i++;
         }
+        return eValido;
     }
     
     public boolean iseValido() {

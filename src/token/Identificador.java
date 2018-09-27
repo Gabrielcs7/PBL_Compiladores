@@ -27,7 +27,7 @@ public class Identificador {
         eValido = false;
     }
     
-    public void verifIdentif (String a){
+    public boolean verifIdentif (String a){
         
         char [] caracteres = a.toCharArray();
         
@@ -35,7 +35,7 @@ public class Identificador {
         int j = 0;
         char [] letras = {'a','A','b','B','c','C','d','D','e','E','f','F','g','G','h','H','i','I','j','J','k','K','l','L','m','M','n','N','o','O','p','P','q','Q','r','R','s','S','t','T','u','U','v','V','w','W','x','X','y','Y','z','Z'};
         
-        alteraEValidoFalse();
+        eValido = false;
         
         int [] estado = {0,1,2,3}; //conjunto de estados do autômato
         int estadoAtual = 0;
@@ -45,851 +45,852 @@ public class Identificador {
             if (estadoAtual == 0){
                 if (caracteres[i] == 'a'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'A'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'b'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'B'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'c'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'C'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'd'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'D'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'e'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'E'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'f'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'F'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'g'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'G'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'h'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'H'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'i'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'I'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'j'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'J'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'k'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'K'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'l'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'L'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'm'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'M'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'n'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'N'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'o'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'O'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'p'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'P'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'q'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'Q'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'u'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'U'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'v'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'V'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'w'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'w'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'x'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'X'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'y'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'Y'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'z'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'Z'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == ' '){
-                    alteraEValidoTrue();
+                    eValido = true;
                     break;
                 }else {
-                    alteraEValidoFalse();
+                    eValido = false;
                     break;
                 }
             } else if (estadoAtual == 1){
                 if (caracteres[i] == 'a'){
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'A'){
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'b'){
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'B'){
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'c'){
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'C'){
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'd'){
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'D'){
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'e'){
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'E'){
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'f'){
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'F'){
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'g'){
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'G'){
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'h'){
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'H'){
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'i'){
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'I'){
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'j'){
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'J'){
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'k'){
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'K'){
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'l'){
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'L'){
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'm'){
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'M'){
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'n'){
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'N'){
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'o'){
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'O'){
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'p'){
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'P'){
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'q'){
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'Q'){
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'u'){
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'U'){
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'v'){
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'V'){
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'w'){
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'w'){
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'x'){
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'X'){
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'y'){
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'Y'){
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'z'){
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'Z'){
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == '0'){
                     estadoAtual = 2;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == '1'){
                     estadoAtual = 2;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == '2'){
                     estadoAtual = 2;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == '3'){
                     estadoAtual = 2;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == '4'){
                     estadoAtual = 2;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == '5'){
                     estadoAtual = 2;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == '6'){
                     estadoAtual = 2;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == '7'){
                     estadoAtual = 2;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == '8'){
                     estadoAtual = 2;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == '9'){
                     estadoAtual = 2;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == '_'){
                     estadoAtual = 3;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == ' '){
-                    alteraEValidoTrue();
+                    eValido = true;
                     break;
                 } else {
-                    alteraEValidoFalse();
+                    eValido = false;
                     break;
                 }
             } else if (estadoAtual == 2){
                 if (caracteres[i] == 'a'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'A'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'b'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'B'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'c'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'C'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'd'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'D'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'e'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'E'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'f'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'F'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'g'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'G'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'h'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'H'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'i'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'I'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'j'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'J'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'k'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'K'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'l'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'L'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'm'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'M'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'n'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'N'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'o'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'O'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'p'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'P'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'q'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'Q'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'u'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'U'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'v'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'V'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'w'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'w'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'x'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'X'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'y'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'Y'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'z'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'Z'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == '0'){
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == '1'){
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == '2'){
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == '3'){
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == '4'){
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == '5'){
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == '6'){
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == '7'){
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == '8'){
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == '9'){
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == '_'){
                     estadoAtual = 3;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == ' '){
-                    alteraEValidoTrue();
+                    eValido = true;
                     break;
                     
                 } else {
-                    alteraEValidoFalse();
+                    eValido = false;
                     break;
                 }
             } else if (estadoAtual == 3){
                 if (caracteres[i] == 'a'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'A'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'b'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'B'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'c'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'C'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'd'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'D'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'e'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'E'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'f'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'F'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'g'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'G'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'h'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'H'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'i'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'I'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'j'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'J'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'k'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'K'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'l'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'L'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'm'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'M'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'n'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'N'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'o'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'O'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'p'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'P'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'q'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'Q'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'u'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'U'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'v'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'V'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'w'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'w'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'x'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'X'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'y'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'Y'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'z'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == 'Z'){
                     estadoAtual = 1;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == '0'){
                     estadoAtual = 2;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == '1'){
                     estadoAtual = 2;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == '2'){
                     estadoAtual = 2;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == '3'){
                     estadoAtual = 2;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == '4'){
                     estadoAtual = 2;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == '5'){
                     estadoAtual = 2;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == '6'){
                     estadoAtual = 2;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == '7'){
                     estadoAtual = 2;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == '8'){
                     estadoAtual = 2;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == '9'){
                     estadoAtual = 2;
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == '_'){
-                    alteraEValidoTrue();
+                    eValido = true;
                     
                 } else if (caracteres[i] == ' '){
-                    alteraEValidoTrue();
+                    eValido = true;
                     break;
                     
                 } else {
-                    alteraEValidoFalse();
+                    eValido = false;
                     break;
                 }
             } 
             i++;    
         }
+        return eValido;
     }
     
     public boolean iseValido() {

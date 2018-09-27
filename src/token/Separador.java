@@ -103,7 +103,8 @@ public class Separador {
         System.out.println("\n\n Lista de TOkens:\n");
         while (h < listaTokens.size()){
             System.out.println(listaTokens.get(h).getNome());
-            System.out.println(listaTokens.get(h).getPos());
+            /*System.out.println(listaTokens.get(h).getPos());
+            System.out.println(listaTokens.get(h).getLinha());*/
             h++;
         }
         
@@ -111,12 +112,13 @@ public class Separador {
         
         Comentario c = new Comentario ();
         h = 0;
-        while (h < c.removeComent(listaTokens).size()){
-            System.out.println(listaTokens.get(h).getNome());
+        ArrayList <Token> listaNova;
+        listaNova = c.removeComent(listaTokens);
+        while (h < listaNova.size()){
+            System.out.println(listaNova.get(h).getNome());
             h++;
         }
-        System.out.println("\n");
-        System.out.println(c.eComentario());
+        
         
       return listaTokens;
         

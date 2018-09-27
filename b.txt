@@ -1,1 +1,11 @@
-;2
+/* este
+um bloco
+de 
+ah */
+no meio
+
+/** hahan
+hdhd
+h*/ esse aqui aceita
+
+////////este e pra remover

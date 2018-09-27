@@ -19,6 +19,10 @@ public class Token {
         this.tipo = tipo;
     }
 
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
     public Token(String nome, int pos, int linha) {
         this.nome = nome;
         this.pos = pos;
