@@ -44,8 +44,19 @@ public class Main {
     }
         
         Separador s = new Separador ();
-        s.retornaListaTokens(listaLinhas);
+        ArrayList <Token> listaFinal;
+        listaFinal = s.retornaListaTokens(listaLinhas);
         
+        Classificador c = new Classificador();
+        listaFinal = c.classificaToken(listaFinal);
+        int i = 0;
+        System.out.println("\n");
+        while (i < listaFinal.size()){
+            System.out.println("O token é " + listaFinal.get(i).getNome());
+            System.out.println("O status é " + listaFinal.get(i).getTipo());
+            System.out.println("\n");
+            i++;
+        }
     System.out.println();
         
         

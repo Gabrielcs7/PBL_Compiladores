@@ -9,9 +9,9 @@ public class Numero {
     private ArrayList <String> listaNumeros;
     private boolean eValido;
     
-    public Numero(ArrayList<String> listaNumeros) {
+    public Numero() {
    
-        this.listaNumeros = listaNumeros;
+        
     }
     
     public ArrayList<String> getListaNumeros() {

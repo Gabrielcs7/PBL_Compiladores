@@ -1,9 +1,9 @@
-/* este
+2. /* 
 um bloco
 de 
 ah */
 no meio
-
+==
 /** hahan
 hdhd
 h*/ esse aqui aceita

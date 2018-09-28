@@ -8,12 +8,12 @@ public class Delimitadores {
     
     private boolean eDelimit; 
     
-    public boolean eDelimitador (char c){
+    public boolean eDelimitador (String c){
         
         int estadoAtual = 0;
         int i = 0;
-                if (c == ';' || c == ',' || c == '(' || c == ')' || c == '{' || 
-                       c == '}' || c == ']' || c == '[' || c == '.'){
+                if (c.equals (";") || c.equals (",") || c.equals ("(")|| c.equals (")")|| c.equals ("{") || 
+                       c.equals ("}") || c.equals ("]") || c.equals ("[") || c.equals (".")){
                     return true;
                 } else {
                     return false;

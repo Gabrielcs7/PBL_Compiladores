@@ -17,14 +17,22 @@ import java.util.Scanner;
 public class Teste {
     public static void main(String[] args) {
         
-         ArrayList <String> listaNumeros = new ArrayList ();
+       /*  ArrayList <String> listaNumeros = new ArrayList ();
         Scanner ler = new Scanner (System.in);
         System.out.println("DIGITE UM OPERADOR: ");
         String nome = ler.nextLine();
         
         Delimitadores o = new Delimitadores ();
         
-       // System.out.println(o.eDelimitador(nome));
+       // System.out.println(o.eDelimitador(nome));*/
+       
+       Scanner ler = new Scanner (System.in);
+        System.out.println("DIGITE UM OPERADOR: ");
+        String nome = ler.nextLine();
+        Identificador id = new Identificador ();
+        
+        if (id.verifIdentif(nome))
+            System.out.println("deu certo1");
         
     }
 }
