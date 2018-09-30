@@ -23,6 +23,10 @@ public class Identificador {
         eValido = false;
     }
     
+    public boolean getEValido (){
+        return eValido;
+    }
+    
     public boolean verifIdentif (String a){
         
         char [] caracteres = a.toCharArray();
@@ -869,7 +873,7 @@ public class Identificador {
             } 
             i++;    
         }
-        return eValido;
+        return getEValido();
     }
     
     public boolean iseValido() {

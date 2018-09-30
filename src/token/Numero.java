@@ -14,6 +14,20 @@ public class Numero {
         
     }
     
+    public void alteraEValidoTrue (){
+        
+        eValido = true;
+    }
+    
+    public void alteraEValidoFalse (){
+        
+        eValido = false;
+    }
+    
+    public boolean getEValido (){
+        return eValido;
+    }
+    
     public ArrayList<String> getListaNumeros() {
         return listaNumeros;
     }
@@ -25,7 +39,7 @@ public class Numero {
                
         int i = 0;
         
-        eValido = true; //variável para verificar se a string é válida
+        alteraEValidoTrue(); //variável para verificar se a string é válida
         
          //conjunto de estados do autômato
         int estadoAtual = 0;
@@ -39,7 +53,7 @@ public class Numero {
                 } else if (Character.isDigit(caracteres[i])){
                     estadoAtual = 3;
                 } else{
-                    eValido = false;
+                    alteraEValidoFalse();
                     break;
                 }   
             } else if (estadoAtual == 1){
@@ -49,7 +63,7 @@ public class Numero {
                 } else if (Character.isDigit(caracteres[i])){
                     estadoAtual = 3;
                 } else{
-                    eValido = false;
+                    alteraEValidoFalse();
                     break;
                 }   
                 
@@ -59,7 +73,7 @@ public class Numero {
                 } else if (Character.isDigit(caracteres[i])){
                     estadoAtual = 3;
                 }else{
-                    eValido = false;
+                    alteraEValidoFalse();
                     break;
                 }   
             } else if(estadoAtual == 3){
@@ -68,21 +82,21 @@ public class Numero {
                 } else if (caracteres[i] == '.'){
                     estadoAtual = 4;
                 }else{
-                    eValido = false;
+                    alteraEValidoFalse();
                     break;
                 }   
             }else if(estadoAtual == 4){
                 if (Character.isDigit(caracteres[i])){
                     estadoAtual = 5;
                 }else {
-                    eValido = false;
+                    alteraEValidoFalse();
                     break;
                 }
             } else if (estadoAtual == 5){
                 if (Character.isDigit(caracteres[i])){
                     estadoAtual = 5;
                 }else{
-                    eValido = false;
+                    alteraEValidoFalse();
                     break;
                 }   
             }  
@@ -90,10 +104,10 @@ public class Numero {
         }
         //se houve um break, já é falso
         if (estadoAtual == 1 || estadoAtual == 2 || estadoAtual == 4){ //se um desses estados (os não-finais) é verdadeiro, seta como falso
-           eValido = false;
+           alteraEValidoFalse();
         }
         //os estados só serão verdadeiros se forem os estados atuais da leitura
-        return eValido;
+        return getEValido();
     }
 
     

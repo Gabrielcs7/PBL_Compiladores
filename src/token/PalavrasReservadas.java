@@ -27,11 +27,17 @@ public class PalavrasReservadas {
         eValido = false;
     }
     
+    public boolean getEValido (){
+        return eValido;
+    }
+    
     public boolean verificaReservada (String a){
         
         char [] lista = a.toCharArray();
         int i = 0;
         
+        alteraEValidoFalse();
+                
         // Verifica se trata-se da palavra reservada "extends"
         while (i < lista.length){
             if (lista[i] == 'e'){
@@ -618,6 +624,6 @@ public class PalavrasReservadas {
             else {
             }
         }
-        return false;
+        return getEValido();
     }
 }
