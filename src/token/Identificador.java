@@ -28,7 +28,6 @@ public class Identificador {
         char [] caracteres = a.toCharArray();
         
         int i = 0;
-        int j = 0;
         
         alteraEValidoFalse();
         
