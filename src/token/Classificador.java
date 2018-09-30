@@ -28,7 +28,13 @@ public class Classificador {
             tokenAux = listaTokens.get(h);
             auxVector = aux.toCharArray();
             
-            if (Character.isLetter(auxVector[0])){
+            if(Character.isLetter(auxVector[0])){
+                if (pr.verificaReservada(aux)){
+                    tokenAux.setTipo("Palavra Reservada");
+                } else {
+                    tokenAux.setTipo("Palavra reservada mal formada");
+                }
+            } else if (Character.isLetter(auxVector[0])){
                 if (id.verifIdentif(aux)){
                     tokenAux.setTipo("Identificador");
                 } else {
