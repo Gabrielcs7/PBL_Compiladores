@@ -36,7 +36,7 @@ public class CadeiaCaracteres {
         
         char [] caracteres = a.toCharArray();
         
-        eValido = false;
+        alteraEValidoFalse();
         
         int i = 0;
         int estadoAtual = 0;
