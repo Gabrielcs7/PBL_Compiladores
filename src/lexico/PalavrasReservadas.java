@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package token;
+package lexico;
 
 /**
  *
@@ -625,5 +625,16 @@ public class PalavrasReservadas {
             }
         }
         return getEValido();
+    }
+    
+    public boolean verifReservada (String a){
+        if (a.equals("const") || a.equals("variables") || a.equals("class") || a.equals("method") || a.equals("return") || a.equals("main")
+               || a.equals("if") || a.equals ("then") || a.equals ("else") || a.equals ("while") || a.equals ("read") 
+                || a.equals ("void") || a.equals ("int") || a.equals ("float") || a.equals ("bool") || a.equals ("string") || a.equals ("true")
+                || a.equals ("false") || a.equals ("extends")){
+            return true;
+        } else {
+            return false;
+        }
     }
 }

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package token;
+package lexico;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -29,10 +29,9 @@ public class Teste {
        Scanner ler = new Scanner (System.in);
         System.out.println("DIGITE UM OPERADOR: ");
         String nome = ler.nextLine();
-        Identificador id = new Identificador ();
         
-        if (id.verifIdentif(nome))
-            System.out.println("deu certo1");
+        if (nome.startsWith("\""))
+            System.out.println("deu certo!");
         
     }
 }

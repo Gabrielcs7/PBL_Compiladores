@@ -1,4 +1,4 @@
-package token;
+package lexico;
 import java.util.ArrayList;
 /**
  *
@@ -6,15 +6,15 @@ import java.util.ArrayList;
  */
 public class Classificador {
      
-    private PalavrasReservadas pr;
+    private PalavrasReservadas pr = new PalavrasReservadas();
     private Numero n = new Numero();
     private Operadores op = new Operadores();
     private Delimitadores delim = new Delimitadores();
     private Identificador id = new Identificador();
     private CadeiaCaracteres ccarac = new CadeiaCaracteres();
-    private String regString = "/[a-z]";
-    private String regNumero = "/[1-9]";
-    private final String aspas = "\"\"";
+   // private String regString = "/[a-z]";
+   // private String regNumero = "/[1-9]";
+    private final String aspas = "\"";
     
     public ArrayList <Token> classificaToken (ArrayList <Token> listaTokens){
         
@@ -29,28 +29,28 @@ public class Classificador {
             auxVector = aux.toCharArray();
             
             if(Character.isLetter(auxVector[0])){
-                if (pr.verificaReservada(aux)){
+                if (pr.verifReservada(aux)){
                     tokenAux.setTipo("Palavra Reservada");
-                } else {
-                    tokenAux.setTipo("Palavra reservada mal formada");
-                }
-            } else if (Character.isLetter(auxVector[0])){
-                if (id.verifIdentif(aux)){
+                } else if (id.verifIdentif(aux)){
                     tokenAux.setTipo("Identificador");
                 } else {
                     tokenAux.setTipo("Identificador mal formado");
+                    tokenAux.setTemErro(true);
                 }
-            } else if (Character.isDigit(auxVector[0])){
+            } else if (Character.isDigit(auxVector[0]) || aux.startsWith("-1") || aux.startsWith("-2") || aux.startsWith("-3") || aux.startsWith("-4")
+                    || aux.startsWith("-5") || aux.startsWith("-6") || aux.startsWith("-7") || aux.startsWith("-8") || aux.startsWith("-9")){
                 if (n.verifNumero(aux)){
                     tokenAux.setTipo("Numero");
                 } else {
                     tokenAux.setTipo("Numero mal formado");
+                    tokenAux.setTemErro(true);
                 }
             } else if (aux.startsWith(aspas)){
                 if (ccarac.isCadeia(aux)){
                     tokenAux.setTipo("Cadeia de caracteres");
                 } else {
                     tokenAux.setTipo("Cadeia de caracteres mal formada");
+                    tokenAux.setTemErro(true);
                 }
             }else if (aux.startsWith("/")) {
                     if (aux.equals("//")){
@@ -59,6 +59,7 @@ public class Classificador {
                         tokenAux.setTipo("Comentario de bloco");
                     } else {
                         tokenAux.setTipo("Comentario mal formado");
+                        tokenAux.setTemErro(true);
                     }
                 
             } else if (aux.startsWith("+") || aux.startsWith("-") || aux.startsWith("*") || aux.startsWith("/")){
@@ -66,6 +67,7 @@ public class Classificador {
                     tokenAux.setTipo("Operador Aritmetico");
                 } else {
                     tokenAux.setTipo("Operador Aritmetico mal formado");
+                    tokenAux.setTemErro(true);
                 }   
             } else if (aux.startsWith("!")){
                 if (op.eOperadorRelacional(aux)){
@@ -74,6 +76,7 @@ public class Classificador {
                     tokenAux.setTipo("Operador Logico");
                 } else {
                     tokenAux.setTipo("Operador Relacional mal formado");
+                    tokenAux.setTemErro(true);
                 }   
                     
             } else if (aux.startsWith("=") || aux.startsWith("<") || aux.startsWith(">")){
@@ -81,12 +84,14 @@ public class Classificador {
                     tokenAux.setTipo("Operador Relacional");
                 } else {
                     tokenAux.setTipo("Operador Relacional mal formado");
+                    tokenAux.setTemErro(true);
                 }
-            }else if (aux.startsWith("&") || aux.startsWith("|")){
+            }else if (aux.startsWith("&") || aux.startsWith("|")){ //AQUI AQUI ==============
                 if (op.eOperadorLogico(aux)){
                     tokenAux.setTipo("Operador Lógico");
                 } else {
                     tokenAux.setTipo("Operador Lógico mal formado");
+                    tokenAux.setTemErro(true);
                 }
             } else if (aux.startsWith(";") || aux.startsWith(",") || aux.startsWith("(") || aux.startsWith(")") || aux.startsWith("[") || aux.startsWith("]")
                 || aux.startsWith(".") || aux.startsWith("{") || aux.startsWith("}")){
@@ -94,8 +99,12 @@ public class Classificador {
                      tokenAux.setTipo("Delimitador");
                     } else {
                         tokenAux.setTipo("Delimitador mal formado");
+                        tokenAux.setTemErro(true);
                     }
-            } 
+            } else {
+                tokenAux.setTipo("tipo desconhecido");
+                tokenAux.setTemErro(true);
+            }
             
             h++;
         }

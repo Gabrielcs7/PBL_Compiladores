@@ -1,4 +1,4 @@
-package token;
+package lexico;
 import java.util.*;
 /**
  *

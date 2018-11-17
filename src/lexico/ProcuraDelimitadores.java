@@ -1,4 +1,4 @@
-package token;
+package lexico;
 /**
  *
  * @author Gabriel
@@ -7,12 +7,12 @@ public class ProcuraDelimitadores {
     
     public boolean procuraDelimi(char s){
         //compara com todos os operadores do alfabeto
-        if (s == ',' || s == ';' || s == '+' || s == '-' || s == '*' || 
+        if (s == ',' || s == ';' || s == '+' || s == '*' || s == '-' || 
              s == '<' || s == '>' ||  s == '='|| s == '!'||
                s == '('|| s == ')'|| s == '{'|| s == '}'||
                 s == ']'|| s == '[' || s == '|' || s == ' ' || s == '!' || s== '/'){
             return true;
-        } else{
+        } else {
             return false;
         }
             
@@ -21,12 +21,12 @@ public class ProcuraDelimitadores {
     
     public boolean procuraNaoDelimi(char s){
         //compara com todos os operadores do alfabeto
-        if (s == ',' || s == ';' || s == '+' || s == '-' || s == '*' || 
+        if (s == ',' || s == ';' || s == '+' ||  s == '*' ||s == '-' ||  
              s == '<' || s == '>' ||  s == '='|| s == '!'||
                s == '('|| s == ')'|| s == '{'|| s == '}'||
-                s == ']'|| s == '[' || s == '|' || s == '!' || s=='/'){
+                s == ']'|| s == '[' || s == '|' || s == '!' || s=='/' ){
             return true;
-        } else{
+        } else {
             return false;
         }
             

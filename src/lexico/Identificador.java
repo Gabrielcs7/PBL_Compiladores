@@ -1,5 +1,5 @@
 
-package token;
+package lexico;
 
 /**
  *
@@ -27,7 +27,7 @@ public class Identificador {
         return eValido;
     }
     
-    public boolean verifIdentif (String a){
+    public boolean verifIdentif1 (String a){
         
         char [] caracteres = a.toCharArray();
         
@@ -879,4 +879,40 @@ public class Identificador {
     public boolean iseValido() {
         return eValido; // método só para teste
     }
+    
+    public boolean verifIdentif (String s){
+        
+        char []car  = s.toCharArray();
+        int h = 0;
+        int estado = 0;
+                
+        while (h < car.length){
+            if (estado == 0){
+                if (Character.isLetter(car[h])){
+                    eValido = true;
+                    estado = 1;
+                } else {
+                    eValido = false;
+                    break;
+                }
+            } else if (estado == 1){
+                if (Character.isLetter(car[h]) || Character.isDigit(car[h]) || car[h] == '_'){
+                    estado = 1;
+                    eValido = true;
+                } 
+                else {
+                    eValido = false;
+                    break;
+                }
+            } else {
+                eValido = false;
+                break;
+            }
+            h++;
+        }
+        
+     return eValido;   
+    }
+    
+    
 }

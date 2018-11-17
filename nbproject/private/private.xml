@@ -3,8 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Gabriel/Documents/NetBeansProjects/PBL1_Compiladores/src/token/Token.java</file>
-            <file>file:/C:/Users/Gabriel/Documents/NetBeansProjects/PBL1_Compiladores/src/token/Main.java</file>
+            <file>file:/C:/Users/Gabriel/Documents/NetBeansProjects/PBL1_Compiladores/src/view/Main.java</file>
+            <file>file:/C:/Users/Gabriel/Documents/NetBeansProjects/PBL1_Compiladores/src/lexico/Classificador.java</file>
+            <file>file:/C:/Users/Gabriel/Documents/NetBeansProjects/PBL1_Compiladores/src/sintatico/Expressoes.java</file>
+            <file>file:/C:/Users/Gabriel/Documents/NetBeansProjects/PBL1_Compiladores/src/sintatico/Regras.java</file>
         </group>
     </open-files>
 </project-private>

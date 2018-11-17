@@ -1,30 +1,39 @@
-package token;
+package view;
 
 import java.util.ArrayList;
-
-import java.util.Scanner;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Collections;
+import lexico.Classificador;
+import lexico.Separador;
+import lexico.Token;
+
+import sintatico.Regras;
 
 /**
- *
  * @author Gabriel
  */
 public class Main {
+    ArrayList <Token> listaFinal;
     public static void main(String[] args) {
        
        ArrayList <String> listaLinhas = new ArrayList ();
+       ArrayList <Token> listaFinal = null;
+       File arqs[];
+       File diretorio = new File("teste");
+       arqs = diretorio.listFiles();
+       int i = 0;
+       if (arqs.length == 0)
+            System.out.println("Ei, você esqueceu de criar um arquivo na pasta teste");
        
-       String reg2 = "||";
-       
-       Scanner ler = new Scanner(System.in);
- 
-    System.out.printf("Informe o nome de arquivo:\n");
-    String nome = ler.nextLine();
- 
-    try {
-      FileReader arq = new FileReader(nome);
+    for (int ir = 0; ir < arqs.length; ir++){    
+      if (!arqs[ir].getName().startsWith("saida")){
+        try {
+      FileReader arq = new FileReader("teste\\" + arqs[ir].getName());
       BufferedReader lerArq = new BufferedReader(arq);
  
       String linha = lerArq.readLine(); 
@@ -44,23 +53,73 @@ public class Main {
     }
         
         Separador s = new Separador ();
-        ArrayList <Token> listaFinal;
+        
         listaFinal = s.retornaListaTokens(listaLinhas);
         
         Classificador c = new Classificador();
         listaFinal = c.classificaToken(listaFinal);
-        int i = 0;
-        System.out.println("\n");
-        while (i < listaFinal.size()){
-            System.out.println("O token é " + listaFinal.get(i).getNome());
-            System.out.println("O status é " + listaFinal.get(i).getTipo());
-            System.out.println("\n");
-            i++;
-        }
-    System.out.println();
+        Collections.sort (listaFinal);
+       
+        System.out.println();
         
+           try {
+               
+               File file = new File ("teste\\saida_" +  arqs[ir].getName());
+               
+               //OutputStream os = new FileOutputStream(file);
+                              
+               //OutputStreamWriter osw = new OutputStreamWriter(os);
+               FileWriter arqWriter;
+            arqWriter = new FileWriter(file, false);
+               BufferedWriter escreveArq = new BufferedWriter(arqWriter);
+               boolean temErros = false;
+               //escreveArq.write("LISTA DE TOKENS \n");
+               while (i < listaFinal.size()){
+                   
+                   if (listaFinal.get(i).isTemErro())
+                       temErros = true;
+                       
+                   escreveArq.newLine();
+                   escreveArq.newLine();
+                   //escreveArq.write("Token: " + listaFinal.get(i).getNome());
+                   escreveArq.write(listaFinal.get(i).getNome());
+                    
+                   // escreveArq.write("   Tipo: " + listaFinal.get(i).getTipo() + "\n");
+                    escreveArq.newLine();
+                    
+                    escreveArq.flush();
+                    i++;
+                    
+               }
+               escreveArq.newLine();
+               escreveArq.newLine();
+               i = listaFinal.size();
+               //if (!temErros)
+                  // escreveArq.write("PARABÉNS! Seu arquivo não contém nenhum erro! ");
+                   
+               escreveArq.flush();
+//               osw.close();
+               escreveArq.close();
+               arqWriter.close();
+               
+           } catch (IOException ex) {
+               System.err.printf("Erro na escrita no arquivo: %s.\n",
+               ex.getMessage());
+           }
         
+     }   
+       
     }
     
+    //CÓDIGO DO SINTÁTICO, CHAMAR OS AUTÔMATOS E TAL
+    
+    Regras r = new Regras ();
+    r.ifStatement(listaFinal);
+    
+    
+    
+    
+    
+   }
     
 }

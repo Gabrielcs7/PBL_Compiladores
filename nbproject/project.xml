@@ -3,7 +3,7 @@
     <type>org.netbeans.modules.java.j2seproject</type>
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/j2se-project/3">
-            <name>PBL1_Compiladores</name>
+            <name>PBL_Compiladores</name>
             <source-roots>
                 <root id="src.dir"/>
             </source-roots>
