@@ -207,7 +207,31 @@ public class Regras {
                         sublista = lista.subList(i+arrayAux[1], (lista.size())); 
                         this.commands(sublista);
                     }
-                } else {
+                } else if (aux.getNome().equals("write")){
+                     List<Token> sublista = lista.subList(i, (lista.size())); 
+                    
+                    arrayAux = write(sublista);
+                    if (arrayAux[0] == 1){
+                        array[0] = 1;
+                        array[1] = i;
+                        return array;
+                    } else {
+                        sublista = lista.subList(i+arrayAux[1], (lista.size())); 
+                        this.commands(sublista);
+                    }
+                } else if (aux.getNome().equals("read")){
+                    List<Token> sublista = lista.subList(i, (lista.size())); 
+                    
+                    arrayAux = read(sublista);
+                    if (arrayAux[0] == 1){
+                        array[0] = 1;
+                        array[1] = i;
+                        return array;
+                    } else {
+                        sublista = lista.subList(i+arrayAux[1], (lista.size())); 
+                        this.commands(sublista);
+                    }
+                }else {
                     array[0] = 0;
                     array[1] = i;
                     return array;
@@ -376,11 +400,165 @@ public class Regras {
                     return retorno;
                 }
             }
-        }
-        
+        }   
         return retorno;
         
     }
+    public int [] write (List <Token> lista){
+        
+        int retorno[] = new int[2];
+        
+        int estado = 1;
+        
+        for (int i = 0; i < lista.size();i++){
+            Token aux = lista.get(i);
+            if (estado == 1){
+                if (aux.getNome().equals("write")){
+                    estado = 2;
+                } else {
+                    retorno[0] = 0;
+                    retorno[1] = i;
+                    return retorno;
+                }
+            } else if (estado == 2){
+                if (aux.getNome().equals("(")){
+                    estado = 3;
+                }else {
+                    retorno[0] = 0;
+                    retorno[1] = i;
+                    return retorno;
+                }
+            } else if (estado == 3){
+                if (aux.getTipo().equals("Identificador")){
+                    estado = 4;
+                    retorno[0] = 1;
+                    retorno[1] = i;
+                } else if(aux.getTipo().equals("Cadeia de caracteres")){
+                    estado = 6;
+                    retorno[0] = 1;
+                    retorno[1] = i;
+                }else {
+                    retorno[0] = 0;
+                    retorno[1] = i;
+                    return retorno;
+                }
+            } else if (estado == 4){
+                if (aux.getNome().equals(".")){
+                    estado = 5;
+                }else {
+                    retorno[0] = 0;
+                    retorno[1] = i;
+                    return retorno;
+                }
+            } else if (estado == 5){
+                if (aux.getTipo().equals("Identificador")){
+                    estado = 6;
+                    retorno[0] = 1;
+                    retorno[1] = i;
+                } else {
+                    retorno[0] = 0;
+                    retorno[1] = i;
+                    return retorno;
+                }
+            } else if (estado == 6){
+                if (aux.getNome().equals(",")){
+                    estado = 3;
+                } else if (aux.getNome().equals(")")){
+                    estado = 7;
+                } else {
+                    retorno[0] = 0;
+                    retorno[1] = i;
+                    return retorno;
+                }
+            } else if (estado == 7){
+                if (aux.getNome().equals(";")){
+                    retorno[0] = 1;
+                    retorno[1] = i;
+                } else {
+                    retorno[0] = 0;
+                    retorno[1] = i;
+                    return retorno;
+                }
+            }
+        }
+        return retorno;
+    }
     
+    
+    public int [] read (List<Token> lista){
+          int retorno[] = new int[2];
+        
+        int estado = 1;
+        
+        for (int i = 0; i < lista.size();i++){
+            Token aux = lista.get(i);
+            if (estado == 1){
+                if (aux.getNome().equals("read")){
+                    estado = 2;
+                } else {
+                    retorno[0] = 0;
+                    retorno[1] = i;
+                    return retorno;
+                }
+            } else if (estado == 2){
+                if (aux.getNome().equals("(")){
+                    estado = 3;
+                }else {
+                    retorno[0] = 0;
+                    retorno[1] = i;
+                    return retorno;
+                }
+            } else if (estado == 3){
+                if (aux.getTipo().equals("Identificador")){
+                    estado = 4;
+                    retorno[0] = 1;
+                    retorno[1] = i;
+                } else {
+                    retorno[0] = 0;
+                    retorno[1] = i;
+                    return retorno;
+                }
+            } else if (estado == 4){
+                if (aux.getNome().equals(".")){
+                    estado = 5;
+                }else {
+                    retorno[0] = 0;
+                    retorno[1] = i;
+                    return retorno;
+                }
+            } else if (estado == 5){
+                if (aux.getTipo().equals("Identificador")){
+                    estado = 6;
+                    retorno[0] = 1;
+                    retorno[1] = i;
+                } else {
+                    retorno[0] = 0;
+                    retorno[1] = i;
+                    return retorno;
+                }
+            } else if (estado == 6){
+                if (aux.getNome().equals(",")){
+                    estado = 3;
+                } else if (aux.getNome().equals(")")){
+                    estado = 7;
+                } else {
+                    retorno[0] = 0;
+                    retorno[1] = i;
+                    return retorno;
+                }
+            } else if (estado == 7){
+                if (aux.getNome().equals(";")){
+                    retorno[0] = 1;
+                    retorno[1] = i;
+                } else {
+                    retorno[0] = 0;
+                    retorno[1] = i;
+                    return retorno;
+                }
+            }
+        }
+        return retorno;
+        
+    }
     
 }
