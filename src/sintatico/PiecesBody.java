@@ -18,29 +18,48 @@ public class PiecesBody {
     public PiecesBody (String corpo){
         
         String aux, aux3="";
-        char aux2;
+        String aux2;
         for (int i=0; i<corpo.length(); i++){
             aux = null;
-            aux2 = corpo.charAt(i);
-            if (aux2 =='<'){
-                if (aux3!=""){
+            aux2 = corpo.substring(i, i+1);
+            if (aux2.equals("<")){
+                if (aux3.equals("")){
                     partes.add(aux3);
                     aux3="";
                 } else {
-                    aux3 = "" + aux2;
+                    aux3=aux3.concat(aux2);
                     for (int j=i+1;j<corpo.length();j++){
-                        aux2 = corpo.charAt(j);
-                        if (aux2 =='>'){
-                            aux3 += aux2;
+                        aux2 = corpo.substring(j, j+1);
+                        if (aux2.equals(">")){
+                            aux3=aux3.concat(aux2);
                             partes.add(aux3);
                         } else {
-                            aux3 += aux2;
+                            aux3=aux3.concat(aux2);
                         }
                     }
                 }
             }
             else {
-                aux3+=aux2;
+                aux3=aux3.concat(aux2);
+            }
+            if (aux2.equals("'")){
+                if (aux3.equals("")){
+                    partes.add(aux3);
+                    aux3="";
+                } else {
+                    aux3=aux3.concat(aux2);
+                    for (int j=i+1;j<corpo.length();j++){
+                        aux2 = corpo.substring(j, j+1);
+                        if (aux2.equals("'")){
+                            aux3=aux3.concat(aux2);
+                            partes.add(aux3);
+                        } else {
+                            aux3=aux3.concat(aux2);
+                        }
+                    }
+                }
+            } else {
+                aux3=aux3.concat(aux2);
             }
         }
     }
