@@ -4,10 +4,6 @@ package sintatico;
 import java.util.List;
 import lexico.Token;
 
-/**
- *
- * @author Gabriel
- */
 public class Regras2 {
     Regras regras = new Regras();
     public int [] atrib (List <Token> lista){
