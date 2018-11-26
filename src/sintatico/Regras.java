@@ -9,6 +9,7 @@ import lexico.Token;
  * @author Gabriel
  */
 public class Regras {
+    Regras2 regras2 = new Regras2();
     
     public int [] ifStatement (List <Token> lista){
         List <Token> sublista;
@@ -189,12 +190,9 @@ public class Regras {
                     if (arrayAux[0] == 1){
                         array[0] = 1;
                         array[1] = i;
-                        return array;
-                    } else {
-                        System.out.println("teve erro no if"); //ajustar para uma melhor forma de sinalizar erro
                         sublista = lista.subList(i+arrayAux[1], (lista.size())); 
                         this.commands(sublista);
-                    }
+                    } 
                 } else if (aux.getNome().equals("if")){
                     List<Token> sublista = lista.subList(i, (lista.size())); 
                     
@@ -202,11 +200,9 @@ public class Regras {
                     if (arrayAux[0] == 1){
                         array[0] = 1;
                         array[1] = i;
-                        return array;
-                    } else {
                         sublista = lista.subList(i+arrayAux[1], (lista.size())); 
                         this.commands(sublista);
-                    }
+                    } 
                 } else if (aux.getNome().equals("write")){
                      List<Token> sublista = lista.subList(i, (lista.size())); 
                     
@@ -214,8 +210,6 @@ public class Regras {
                     if (arrayAux[0] == 1){
                         array[0] = 1;
                         array[1] = i;
-                        return array;
-                    } else {
                         sublista = lista.subList(i+arrayAux[1], (lista.size())); 
                         this.commands(sublista);
                     }
@@ -226,21 +220,33 @@ public class Regras {
                     if (arrayAux[0] == 1){
                         array[0] = 1;
                         array[1] = i;
-                        return array;
-                    } else {
+                        sublista = lista.subList(i+arrayAux[1], (lista.size())); 
+                        this.commands(sublista);
+                        
+                    } 
+                } else if (aux.getTipo().equals("Identificador")){
+                    List<Token> sublista = lista.subList(i, (lista.size()));
+                    arrayAux = regras2.atribuition(sublista);
+                    if (arrayAux[0] == 1){
+                        array[0] = 1;
+                        array[1] = i;
                         sublista = lista.subList(i+arrayAux[1], (lista.size())); 
                         this.commands(sublista);
                     }
+                    
                 }else {
                     array[0] = 0;
                     array[1] = i;
                     return array;
                 }
             } else if (estado == 2){
-                if (aux.getTipo().equals("Identificador") || aux.getTipo().equals("Numero") || aux.getNome().equals("true") || 
+                if (aux.getTipo().equals("Numero") || aux.getNome().equals("true") || 
                     aux.getNome().equals("false") ||  aux.getTipo().equals("Cadeia de caracteres")){
                     estado = 3;
-                } else {
+                } else if (aux.getTipo().equals("Identificador")){
+                    estado = 4;
+                    
+                }else {
                     array[0] = 0;
                     array[1] = i;
                 }
@@ -251,6 +257,20 @@ public class Regras {
                 } else {
                     return array;
                 }
+            } else if (estado == 4){
+                if (aux.getNome().equals("[")){
+                    List<Token> sublista = lista.subList(i, (lista.size()));
+                    arrayAux = regras2.arrayVerification(sublista);
+                    if (arrayAux[0] == 1){
+                        estado = 3;
+                    }
+                    i = arrayAux[1] + i;
+                } else {
+                    array[0] = 0;
+                    array[1] = i;
+                }
+                
+                    
             }
         }
         
@@ -389,17 +409,7 @@ public class Regras {
                     retorno[1] = i;
                     return retorno;
                 }
-            } else if (estado == 8){ //estado de erro
-                if (aux.getNome().equals("}")){
-                    retorno[0] = 0;
-                    retorno[1] = i;
-                    return retorno;
-                } else{
-                    retorno[0] = 0;
-                    retorno[1] = i;
-                    return retorno;
-                }
-            }
+            } 
         }   
         return retorno;
         
