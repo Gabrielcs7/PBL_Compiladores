@@ -7,12 +7,15 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
 import lexico.Classificador;
 import lexico.Separador;
 import lexico.Token;
 
 import sintatico.Regras;
+import sintatico.Regras2;
 
 /**
  * @author Gabriel
@@ -57,10 +60,23 @@ public class Main {
         listaFinal = s.retornaListaTokens(listaLinhas);
         
         Classificador c = new Classificador();
+        
         listaFinal = c.classificaToken(listaFinal);
-        Collections.sort (listaFinal);
+       
+        Collections.sort(listaFinal);
        
         System.out.println();
+        ArrayList <Token> listacopy;
+    listacopy = listaFinal;
+    
+    if (!listaFinal.isEmpty()){
+        for (int u = 0; u < listaFinal.size(); u++){
+            Token a = listaFinal.get(u);
+            if (a.getNome().equals(" "))
+                listacopy.remove(u); 
+        }
+    }
+        listaFinal = listacopy;
         
            try {
                
@@ -80,9 +96,11 @@ public class Main {
                        temErros = true;
                        
                    escreveArq.newLine();
-                   escreveArq.newLine();
+                   //escreveArq.newLine();
                    //escreveArq.write("Token: " + listaFinal.get(i).getNome());
                    escreveArq.write(listaFinal.get(i).getNome());
+                   escreveArq.newLine();
+                   escreveArq.write(listaFinal.get(i).getPos());
                     
                    // escreveArq.write("   Tipo: " + listaFinal.get(i).getTipo() + "\n");
                     escreveArq.newLine();
@@ -111,15 +129,18 @@ public class Main {
        
     }
     
-    //CÓDIGO DO SINTÁTICO, CHAMAR OS AUTÔMATOS E TAL
+        //CÓDIGO DO SINTÁTICO, CHAMAR OS AUTÔMATOS E TAL
     
-    Regras r = new Regras ();
-    r.ifStatement(listaFinal);
-    
-    
-    
-    
-    
-   }
+//    Regras r = new Regras ();
+//    
+//     r.globalBlock(listaFinal);
+//     System.out.println(r.contador);
+//        
+//    for (int as = 0; as < r.erros.size(); as++){
+//        
+//        System.out.println("\nO token esperado era: " + r.erros.get(as)[1].getNome() + " na linha " + r.erros.get(as)[1].getLinha());
+//    }
+//    
+}
     
 }
