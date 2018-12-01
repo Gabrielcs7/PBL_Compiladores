@@ -26,6 +26,7 @@ public class Main {
        
        ArrayList <String> listaLinhas = new ArrayList ();
        ArrayList <Token> listaFinal = null;
+       ArrayList <Token> errosSintaticos = new ArrayList();
        File arqs[];
        File diretorio = new File("teste");
        arqs = diretorio.listFiles();

@@ -13,7 +13,7 @@ public class Regras {
     public int contador = 0; 
     public List <Token[]> erros = new ArrayList(); 
     
-    public int [] ifStatement (List <Token> lista){
+    public int [] ifStatement (List <Token> lista, ArrayList <Token> errosSintaticos){
         List <Token> sublista;
         int array [] = new int[2];
         int retorno[] = new int [2];
@@ -94,7 +94,7 @@ public class Regras {
         return retorno;
     }
     
-    public int [] expression (List <Token> lista){
+    public int [] expression (List <Token> lista, ArrayList <Token> errosSintaticos){
         
         int retorno[] = new int [2];
         int estado  = 1;
@@ -169,7 +169,7 @@ public class Regras {
         return retorno;
     }
     
-    public int [] commands (List <Token> lista){
+    public int [] commands (List <Token> lista, ArrayList <Token> errosSintaticos){
         
         int array[] = new int [2];
         int arrayAux[] = new int [2];
@@ -281,7 +281,7 @@ public class Regras {
         
     }
 
-    public int[] elseStatement(List<Token> lista) {
+    public int[] elseStatement(List<Token> lista, ArrayList <Token> errosSintaticos) {
         
         int retorno[] = new int [2];
         int array[] = new int [2];
@@ -339,7 +339,7 @@ public class Regras {
         
     }
     
-    public int [] whileStatement (List <Token> lista){
+    public int [] whileStatement (List <Token> lista, ArrayList <Token> errosSintaticos){
         
         int retorno[] = new int[2];
         int array[] = new int[2];
@@ -417,7 +417,7 @@ public class Regras {
         return retorno;
         
     }
-    public int [] write (List <Token> lista){
+    public int [] write (List <Token> lista, ArrayList <Token> errosSintaticos){
         
         int retorno[] = new int[2];
         
@@ -498,7 +498,7 @@ public class Regras {
     }
     
     
-    public int [] read (List<Token> lista){
+    public int [] read (List<Token> lista, ArrayList <Token> errosSintaticos){
           int retorno[] = new int[2];
         
         int estado = 1;
@@ -575,7 +575,7 @@ public class Regras {
     }
     
     
-     public int [] atrib (List <Token> lista){
+     public int [] atrib (List <Token> lista, ArrayList <Token> errosSintaticos){
         
         int [] retorno = new int [2];
         int estado = 1;
@@ -644,7 +644,7 @@ public class Regras {
         return retorno;
     }
     
-    public int [] increment (List <Token> lista){
+    public int [] increment (List <Token> lista, ArrayList <Token> errosSintaticos){
         
         int retorno [] = new int[2];
         int estado = 1;
@@ -691,7 +691,7 @@ public class Regras {
         return retorno;
     }
     
-    public int [] atribuition (List <Token> lista){
+    public int [] atribuition (List <Token> lista, ArrayList <Token> errosSintaticos){
         
         int retorno[] = new int [2];
         int estado = 2;
@@ -743,7 +743,7 @@ public class Regras {
         return retorno;
     }
     
-    public int [] expMethod (List <Token> lista){
+    public int [] expMethod (List <Token> , ArrayList <Token> errosSintaticos){
         
         int retorno[] = new int [2];
         int estado = 1;
@@ -776,7 +776,7 @@ public class Regras {
         return retorno;
     }
     
-    public int expMethod2(List <Token> lista){
+    public int expMethod2(List <Token> lista, ArrayList <Token> errosSintaticos){
         int retorno = 1;
         int estado = 1;
         
@@ -820,7 +820,7 @@ public class Regras {
         return retorno;
     }
     
-    public int method (List <Token> lista){
+    public int method (List <Token> lista, ArrayList <Token> errosSintaticos){
          int retorno = 0;
         int estado = 1;
         
@@ -925,7 +925,7 @@ public class Regras {
         return retorno;
     }
     
-    public int [] variablesDeclaration (List <Token> lista){
+    public int [] variablesDeclaration (List <Token> lista, ArrayList <Token> errosSintaticos){
      
         int retorno[] = new int [2];
         int estado = 1;
@@ -977,7 +977,7 @@ public class Regras {
         return retorno;
     }
     
-    public int [] variable (List <Token> lista){
+    public int [] variable (List <Token> lista, ArrayList <Token> errosSintaticos){
      
         int retorno[] = new int [2];
         int estado = 1;
@@ -1023,7 +1023,7 @@ public class Regras {
         return retorno;
     }
     
-    public int [] arrayVerification (List <Token> lista){
+    public int [] arrayVerification (List <Token> lista, ArrayList <Token> errosSintaticos){
      
         int retorno[] = new int [2];
         int estado = 1;
@@ -1085,7 +1085,7 @@ public class Regras {
     }
     
     
-    public int [] constAttr (List <Token> lista){
+    public int [] constAttr (List <Token> lista, ArrayList <Token> errosSintaticos){
         int retorno[] = new int [2];
         int estado = 1;
         
@@ -1142,7 +1142,7 @@ public class Regras {
         return retorno;
     }
     
-     public int [] constBlock (List <Token> lista){
+     public int [] constBlock (List <Token> lista, ArrayList <Token> errosSintaticos){
         int retorno[] = new int [2];
         int estado = 1;
         
@@ -1190,7 +1190,7 @@ public class Regras {
         return retorno;
     }
     
-     public int [] addExp (List <Token> lista){
+     public int [] addExp (List <Token> lista, ArrayList <Token> errosSintaticos){
      
         int retorno[] = new int [2];
         int estado = 1;
@@ -1237,7 +1237,7 @@ public class Regras {
     }
      
      
-    public int classBlock (List <Token> lista){
+    public int classBlock (List <Token> lista, ArrayList <Token> errosSintaticos){
      
         int retorno = 1;
         int estado = 1;
@@ -1308,7 +1308,7 @@ public class Regras {
         return retorno;
     } 
     
-    public int globalBlock (List <Token> lista){
+    public int globalBlock (List <Token> lista, ArrayList <Token> errosSintaticos){
          int retorno = 1;
         int estado = 1;
         for (; contador < lista.size(); contador++){

@@ -1,13 +1,14 @@
 
 package sintatico;
 
+import java.util.ArrayList;
 import java.util.List;
 import lexico.Token;
 
 public class Regras2 {
     Regras regras = new Regras();
     
-    public int [] atrib (List <Token> lista){
+    public int [] atrib (List <Token> lista, ArrayList <Token> errosSintaticos){
         
         int [] retorno = new int [2];
         int estado = 1;
@@ -76,7 +77,7 @@ public class Regras2 {
         return retorno;
     }
     
-    public int [] increment (List <Token> lista){
+    public int [] increment (List <Token> lista, ArrayList <Token> errosSintaticos){
         
         int retorno [] = new int[2];
         int estado = 1;
@@ -123,7 +124,7 @@ public class Regras2 {
         return retorno;
     }
     
-    public int [] atribuition (List <Token> lista){
+    public int [] atribuition (List <Token> lista, ArrayList <Token> errosSintaticos){
         
         int retorno[] = new int [2];
         int estado = 2;
@@ -175,7 +176,7 @@ public class Regras2 {
         return retorno;
     }
     
-    public int [] expMethod (List <Token> lista){
+    public int [] expMethod (List <Token> lista, ArrayList <Token> errosSintaticos){
         
         int retorno[] = new int [2];
         int estado = 1;
@@ -208,7 +209,7 @@ public class Regras2 {
         return retorno;
     }
     
-    public int [] expMethod2(List <Token> lista){
+    public int [] expMethod2(List <Token> lista, ArrayList <Token> errosSintaticos){
         int retorno[] = new int [2];
         int estado = 1;
         
@@ -256,7 +257,7 @@ public class Regras2 {
         return retorno;
     }
     
-    public int [] method (List <Token> lista){
+    public int [] method (List <Token> lista, ArrayList <Token> errosSintaticos){
          int retorno[] = new int [2];
         int estado = 1;
         
@@ -355,7 +356,7 @@ public class Regras2 {
         return retorno;
     }
     
-    public int [] variablesDeclaration (List <Token> lista){
+    public int [] variablesDeclaration (List <Token> lista, ArrayList <Token> errosSintaticos){
      
         int retorno[] = new int [2];
         int estado = 1;
@@ -407,7 +408,7 @@ public class Regras2 {
         return retorno;
     }
     
-    public int [] variable (List <Token> lista){
+    public int [] variable (List <Token> lista, ArrayList <Token> errosSintaticos){
      
         int retorno[] = new int [2];
         int estado = 1;
@@ -453,7 +454,7 @@ public class Regras2 {
         return retorno;
     }
     
-    public int [] arrayVerification (List <Token> lista){
+    public int [] arrayVerification (List <Token> lista, ArrayList <Token> errosSintaticos){
      
         int retorno[] = new int [2];
         int estado = 1;
@@ -515,7 +516,7 @@ public class Regras2 {
     }
     
     
-    public int [] constAttr (List <Token> lista){
+    public int [] constAttr (List <Token> lista, ArrayList <Token> errosSintaticos){
         int retorno[] = new int [2];
         int estado = 1;
         
@@ -572,7 +573,7 @@ public class Regras2 {
         return retorno;
     }
     
-     public int [] constBlock (List <Token> lista){
+     public int [] constBlock (List <Token> lista, ArrayList <Token> errosSintaticos){
         int retorno[] = new int [2];
         int estado = 1;
         
@@ -620,7 +621,7 @@ public class Regras2 {
         return retorno;
     }
     
-     public int [] addExp (List <Token> lista){
+     public int [] addExp (List <Token> lista, ArrayList <Token> errosSintaticos){
      
         int retorno[] = new int [2];
         int estado = 1;
@@ -667,7 +668,7 @@ public class Regras2 {
     }
      
      
-    public int [] classBlock (List <Token> lista){
+    public int [] classBlock (List <Token> lista, ArrayList <Token> errosSintaticos){
      
         int retorno[] = new int [2];
         int estado = 1;
@@ -748,7 +749,7 @@ public class Regras2 {
         return retorno;
     } 
     
-    public int [] globalBlock (List <Token> lista){
+    public int [] globalBlock (List <Token> lista, ArrayList <Token> errosSintaticos){
          int retorno[] = new int [2];
         int estado = 1;
         for (int i = 0; i < lista.size(); i++){
