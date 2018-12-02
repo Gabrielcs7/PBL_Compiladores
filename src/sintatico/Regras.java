@@ -31,7 +31,7 @@ public class Regras {
                     estadoAtual = 3;
             } else if (estadoAtual == 3){
                 sublista = lista.subList(i, (lista.size()));
-                array = this.expression(sublista);
+                array = this.expression(sublista, errosSintaticos);
                 if (array[0] == 1){ //se leu um expression válido 
                     estadoAtual = 4;      
                 } else {
@@ -54,7 +54,7 @@ public class Regras {
             } else if (estadoAtual == 7){
                 sublista = lista.subList(i, (lista.size())); 
                 
-                array = commands(sublista);
+                array = commands(sublista, errosSintaticos);
                 if (array[0] == 1){ //se leu um command válido
                     estadoAtual = 8;                    
                 } else if (array[0] == 2){
@@ -75,7 +75,7 @@ public class Regras {
                 }
             } else if (estadoAtual == 9){
                 sublista = lista.subList(i, (lista.size()));
-                array = elseStatement(sublista);
+                array = elseStatement(sublista, errosSintaticos);
                 array[1] = array[1] + 2;
                 
                if (array[0] == 1 || array[0] == 2){
@@ -196,52 +196,52 @@ public class Regras {
                 } else if (aux.getNome().equals("while")){
                     //List<Token> sublista = lista.subList(i, (lista.size())); 
                     
-                    arrayAux = whileStatement(lista);
+                    arrayAux = whileStatement(lista, errosSintaticos);
                     if (arrayAux[0] == 1){
                         array[0] = 1;
                         array[1] = contador;
                         
-                        this.commands(lista);
+                        this.commands(lista, errosSintaticos);
                     } 
                 } else if (aux.getNome().equals("if")){
                     List<Token> sublista = lista.subList(contador, (lista.size())); 
                     
-                    arrayAux = ifStatement(sublista);
+                    arrayAux = ifStatement(sublista, errosSintaticos);
                     if (arrayAux[0] == 1){
                         array[0] = 1;
                         array[1] = contador;
                         sublista = lista.subList(contador+arrayAux[1], (lista.size())); 
-                        this.commands(sublista);
+                        this.commands(sublista, errosSintaticos);
                     } 
                 } else if (aux.getNome().equals("write")){
                      List<Token> sublista = lista.subList(contador, (lista.size())); 
                     
-                    arrayAux = write(sublista);
+                    arrayAux = write(sublista, errosSintaticos);
                     if (arrayAux[0] == 1){
                         array[0] = 1;
                         array[1] = contador;
                         sublista = lista.subList(contador+arrayAux[1], (lista.size())); 
-                        this.commands(sublista);
+                        this.commands(sublista, errosSintaticos);
                     }
                 } else if (aux.getNome().equals("read")){
                     List<Token> sublista = lista.subList(contador, (lista.size())); 
                     
-                    arrayAux = read(sublista);
+                    arrayAux = read(sublista, errosSintaticos);
                     if (arrayAux[0] == 1){
                         array[0] = 1;
                         array[1] = contador;
                         sublista = lista.subList(contador+arrayAux[1], (lista.size())); 
-                        this.commands(sublista);
+                        this.commands(sublista, errosSintaticos);
                         
                     } 
                 } else if (aux.getTipo().equals("Identificador")){
                     List<Token> sublista = lista.subList(contador, (lista.size()));
-                    arrayAux = this.atribuition(sublista);
+                    arrayAux = this.atribuition(sublista, errosSintaticos);
                     if (arrayAux[0] == 1){
                         array[0] = 1;
                         array[1] = contador;
                         sublista = lista.subList(contador+arrayAux[1], (lista.size())); 
-                        this.commands(sublista);
+                        this.commands(sublista, errosSintaticos);
                     }
                     
                 }else {
@@ -271,7 +271,7 @@ public class Regras {
             } else if (estado == 4){
                 if (aux.getNome().equals("[")){
                     //List<Token> sublista = lista.subList(i, (lista.size()));
-                    arrayAux = this.arrayVerification(lista);
+                    arrayAux = this.arrayVerification(lista, errosSintaticos);
                     if (arrayAux[0] == 1){
                         estado = 3;
                     }
@@ -314,7 +314,7 @@ public class Regras {
                 }
             } else if (estado == 3){
                 List<Token> sublista = lista.subList(i, (lista.size())); 
-                array = commands(sublista);
+                array = commands(sublista, errosSintaticos);
                 if (array[0] == 1){ //se leu um command válido
                     estado = 4;                    
                 } else if (array[0] == 2){
@@ -379,7 +379,7 @@ public class Regras {
                 }
             } else if (estado == 3){
                 List<Token> sublista = lista.subList(i, (lista.size()));
-               array = this.expression(sublista);
+               array = this.expression(sublista, errosSintaticos);
                 if (array[0] == 1){ //se leu um expression válido 
                     estado = 4;      
                 } else {
@@ -408,7 +408,7 @@ public class Regras {
                 }
             } else if (estado == 6){
                 List<Token> sublista = lista.subList(i, (lista.size())); 
-                array = commands(sublista);
+                array = commands(sublista, errosSintaticos);
                 if (array[0] == 1){ //se leu um command válido
                     estado = 7;                    
                 } else if (array[0] == 2){
@@ -647,7 +647,7 @@ public class Regras {
             } else if (estado == 4){
                 List<Token> sublista = lista.subList(i, (lista.size())); 
                 int aux1 [] = new int[2];
-                aux1 = this.expMethod(sublista);
+                aux1 = this.expMethod(sublista, errosSintaticos);
                 if (aux1[0] == 1){
                     estado = 5;
                     
@@ -755,9 +755,9 @@ public class Regras {
                 }
             } else if (estado == 4){
                 List<Token> sublista = lista.subList(i, (lista.size())); 
-                int numero = this.expression(sublista)[0];
-                int numero1 = this.atrib(sublista)[0];
-                int numero2 = this.increment(sublista)[0];
+                int numero = this.expression(sublista, errosSintaticos)[0];
+                int numero1 = this.atrib(sublista, errosSintaticos)[0];
+                int numero2 = this.increment(sublista, errosSintaticos)[0];
                 
                 if (aux.getTipo().equals("Cadeia de caracteres") || aux.getNome().equals("true") || aux.getNome().equals("false") 
                        || numero == 1 || numero1 == 1 || numero2 == 1){
@@ -784,7 +784,7 @@ public class Regras {
         return retorno;
     }
     
-    public int [] expMethod (List <Token> , ArrayList <Token> errosSintaticos){
+    public int [] expMethod (List <Token> lista, ArrayList <Token> errosSintaticos){
         
         int retorno[] = new int [2];
         int estado = 1;
@@ -794,7 +794,7 @@ public class Regras {
             if (estado == 1){
                 List<Token> sublista = lista.subList(i, (lista.size())); 
                 int aux1 [] = new int[2];
-                aux1 = this.atrib(sublista);
+                aux1 = this.atrib(sublista, errosSintaticos);
                 if (aux1[0] == 1){
                     estado = 2;
                     retorno[0] = 1;
@@ -846,7 +846,7 @@ public class Regras {
             }else if (estado == 3){
                 if (aux.getNome().equals("[")){
                     int aux1 [] = new int[2];
-                    aux1 = this.arrayVerification(lista);
+                    aux1 = this.arrayVerification(lista, errosSintaticos);
                     estado = 3;    
                    
                 } else if(aux.getNome().equals(",")){
@@ -909,7 +909,7 @@ public class Regras {
                     estado = 5;
                 }
             } else if (estado == 5){
-                this.expMethod2(lista);
+                this.expMethod2(lista, errosSintaticos);
                 estado = 6;       
                 
             } else if (estado == 6){
@@ -938,17 +938,17 @@ public class Regras {
                     return 1;
                 } else if (aux.getNome().equals("variables")){
                     int aux1 [] = new int[2];
-                    aux1 = this.variable(lista);
+                    aux1 = this.variable(lista, errosSintaticos);
                     estado = 10;
                 }
                     int aux2 [] = new int[2];
-                    aux2 = this.commands(lista);
+                    aux2 = this.commands(lista, errosSintaticos);
                     estado = 10;
                 
                 
             }else if (estado == 9){
                 int aux1 [] = new int[2];
-                aux1 = this.commands(lista);
+                aux1 = this.commands(lista, errosSintaticos);
                 if (aux1[0] == 1){
                     
                 } 
@@ -1010,7 +1010,7 @@ public class Regras {
             } else if (estado == 4){
                 List<Token> sublista = lista.subList(i, (lista.size())); 
                     int aux1 [] = new int[2];
-                    aux1 = this.arrayVerification(sublista);
+                    aux1 = this.arrayVerification(sublista, errosSintaticos);
                     if (aux1[0] == 1){
                         estado = 3;
                     }
@@ -1049,7 +1049,7 @@ public class Regras {
                 if (aux.getNome().equals("int") || aux.getNome().equals("float") || aux.getNome().equals("bool") || aux.getNome().equals("string")){
                     List<Token> sublista = lista.subList(i, (lista.size())); 
                     int aux1 [] = new int[2];
-                    aux1 = this.variablesDeclaration(sublista);
+                    aux1 = this.variablesDeclaration(sublista, errosSintaticos);
                     if (aux1[0] == 1){
                          estado = 3;
                     } 
@@ -1092,9 +1092,9 @@ public class Regras {
                     int aux1 [] = new int[2];
                     
                     if (aux.getNome().equals("++") || aux.getNome().equals("--")){
-                        aux1 = this.increment(sublista);
+                        aux1 = this.increment(sublista, errosSintaticos);
                     } else{
-                        aux1 = this.addExp(sublista);
+                        aux1 = this.addExp(sublista, errosSintaticos);
                     }
                     i = aux1[1] + i;
                     
@@ -1225,7 +1225,7 @@ public class Regras {
                 if (aux.getNome().equals("int") || aux.getNome().equals("float") || aux.getNome().equals("bool") || aux.getNome().equals("string")){
                     List<Token> sublista = lista.subList(i, (lista.size())); 
                     int aux1 [] = new int[2];
-                    aux1 = this.constAttr(sublista);
+                    aux1 = this.constAttr(sublista, errosSintaticos);
                     if (aux1[0] == 1){
                          estado = 3;
                         
@@ -1350,15 +1350,15 @@ public class Regras {
             } else if (estado == 5){
                     int aux1 [] = new int[2];
                    if (aux.getNome().equals("variables")){
-                        aux1 = this.variable(lista);    
+                        aux1 = this.variable(lista, errosSintaticos);    
                     } else if (aux.getNome().equals("method")){
-                      this.method(lista);
+                      this.method(lista, errosSintaticos);
                     }
                     estado = 6;
             }else if (estado == 6){
                     int aux1 [] = new int[2];
                 if (aux.getNome().equals("method")){
-                     this.method(lista);
+                     this.method(lista, errosSintaticos);
                 } else if (aux.getNome().equals("}")){
                     return 1;
                 }
@@ -1379,19 +1379,19 @@ public class Regras {
                 if (aux.getNome().equals("const")){
                    //  List<Token> sublista = lista.subList(contador, (lista.size())); 
                     int aux1 [] = new int[2];
-                    aux1 = this.constBlock(lista);
+                    aux1 = this.constBlock(lista, errosSintaticos);
                      
                     if (aux1[0] == 1){
                         estado = 2;
                     }
                    
                 } else if (aux.getNome().equals("class")){
-                     this.classBlock(lista);
+                     this.classBlock(lista, errosSintaticos);
                      estado = 2;                     
                 } 
             } else if (estado == 2){
                 if (aux.getNome().equals("class")){
-                    this.classBlock(lista);
+                    this.classBlock(lista, errosSintaticos);
                     estado = 2;
                 } else {
                     return 1;
