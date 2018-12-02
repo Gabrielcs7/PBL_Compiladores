@@ -21,6 +21,7 @@ public class Regras2 {
                 } else {
                     retorno[0] = 0;
                     retorno[1] = i;
+                    errosSintaticos.add(lista.get(i));
                     return retorno;
                 }
             } else if (estado == 2){
@@ -31,6 +32,7 @@ public class Regras2 {
                 } else {
                     retorno[0] = 0;
                     retorno[1] = i;
+                    errosSintaticos.add(lista.get(i));
                     return retorno;
                 }
             } else if (estado == 3){
@@ -41,6 +43,7 @@ public class Regras2 {
                 } else {
                     retorno[0] = 0;
                     retorno[1] = i;
+                    errosSintaticos.add(lista.get(i));
                     return retorno;
                 }
             } else if (estado == 4){
@@ -61,6 +64,7 @@ public class Regras2 {
                 } else {
                     retorno[0] = 0;
                     retorno[1] = i;
+                    errosSintaticos.add(lista.get(i));
                     return retorno;
                 }
             } else if (estado == 6){
@@ -94,6 +98,7 @@ public class Regras2 {
                 }else {
                     retorno[0] = 0;
                     retorno[1] = i;
+                    errosSintaticos.add(lista.get(i));
                     return retorno;
                 }
             } else if (estado == 2){
@@ -116,6 +121,7 @@ public class Regras2 {
                 }else {
                     retorno[0] = 0;
                     retorno[1] = i;
+                    errosSintaticos.add(lista.get(i));
                     return retorno;
                 }
             } 
@@ -137,6 +143,7 @@ public class Regras2 {
                 }else {
                     retorno[0] = 0;
                     retorno[1] = i;
+                    errosSintaticos.add(lista.get(i));
                     return retorno;
                 }
             } else if (estado == 3){
@@ -145,6 +152,7 @@ public class Regras2 {
                 }else {
                     retorno[0] = 0;
                     retorno[1] = i;
+                    errosSintaticos.add(lista.get(i));
                     return retorno;
                 }
             } else if (estado == 4){
@@ -159,6 +167,7 @@ public class Regras2 {
                 }else {
                     retorno[0] = 0;
                     retorno[1] = i;
+                    errosSintaticos.add(lista.get(i));
                     return retorno;
                 }
             } else if(estado == 5){
@@ -169,6 +178,7 @@ public class Regras2 {
                 } else {
                     retorno[0] = 0;
                     retorno[1] = i;
+                    errosSintaticos.add(lista.get(i));
                     return retorno;
                 }
             }
@@ -221,6 +231,7 @@ public class Regras2 {
                 } else {
                     retorno[0] = 0;
                     retorno[1] = i;
+                    errosSintaticos.add(lista.get(i));
                     return retorno;
                 }
             }else if (estado == 2){
@@ -231,6 +242,7 @@ public class Regras2 {
                 }else {
                     retorno[0] = 0;
                     retorno[1] = i;
+                    errosSintaticos.add(lista.get(i));
                     return retorno;
                 }
             }else if (estado == 3){
@@ -269,6 +281,7 @@ public class Regras2 {
                 }else {
                     retorno[0] = 0;
                     retorno[1] = i;
+                    errosSintaticos.add(lista.get(i));
                     return retorno;
                 }
             } else if (estado == 2){
@@ -278,6 +291,7 @@ public class Regras2 {
                 } else {
                     retorno[0] = 0;
                     retorno[1] = i;
+                    errosSintaticos.add(lista.get(i));
                     return retorno;
                 }
             } else if (estado == 3){
@@ -286,6 +300,7 @@ public class Regras2 {
                 }else {
                     retorno[0] = 0;
                     retorno[1] = i;
+                    errosSintaticos.add(lista.get(i));
                     return retorno;
                 }
             } else if (estado == 4){
@@ -294,6 +309,7 @@ public class Regras2 {
                 }else {
                     retorno[0] = 0;
                     retorno[1] = i;
+                    errosSintaticos.add(lista.get(i));
                     return retorno;
                 }
             } else if (estado == 5){
@@ -312,6 +328,7 @@ public class Regras2 {
                 }else {
                     retorno[0] = 0;
                     retorno[1] = i;
+                    errosSintaticos.add(lista.get(i));
                     return retorno;
                 }
             }else if (estado == 7){
@@ -320,6 +337,7 @@ public class Regras2 {
                 }else {
                     retorno[0] = 0;
                     retorno[1] = i;
+                    errosSintaticos.add(lista.get(i));
                     return retorno;
                 }
             }else if (estado == 8){
@@ -348,6 +366,7 @@ public class Regras2 {
                 }else {
                     retorno[0] = 0;
                     retorno[1] = i;
+                    errosSintaticos.add(lista.get(i));
                     return retorno;
                 }
             }
@@ -370,6 +389,7 @@ public class Regras2 {
                 }else {
                     retorno[0] = 0;
                     retorno[1] = i;
+                    errosSintaticos.add(lista.get(i));
                     return retorno;
                 }
             } else if (estado == 2){
@@ -378,6 +398,7 @@ public class Regras2 {
                 }else {
                     retorno[0] = 0;
                     retorno[1] = i;
+                    errosSintaticos.add(lista.get(i));
                     return retorno;
                 }
             } else if (estado == 3){
@@ -392,6 +413,7 @@ public class Regras2 {
                 }else {
                     retorno[0] = 0;
                     retorno[1] = i;
+                    errosSintaticos.add(lista.get(i));
                     return retorno;
                 }
             } else if (estado == 4){
@@ -420,6 +442,7 @@ public class Regras2 {
                 }else {
                     retorno[0] = 0;
                     retorno[1] = i;
+                    errosSintaticos.add(lista.get(i));
                     return retorno;
                 }
             } else if (estado == 2){
@@ -428,6 +451,7 @@ public class Regras2 {
                 }else {
                     retorno[0] = 0;
                     retorno[1] = i;
+                    errosSintaticos.add(lista.get(i));
                     return retorno;
                 }
             }else if (estado == 3){
@@ -446,6 +470,7 @@ public class Regras2 {
                 } else {
                     retorno[0] = 0;
                     retorno[1] = i;
+                    errosSintaticos.add(lista.get(i));
                     return retorno;
                 }
                 
@@ -467,6 +492,7 @@ public class Regras2 {
                 } else {
                     retorno[0] = 0;
                     retorno[1] = i;
+                    errosSintaticos.add(lista.get(i));
                     return retorno;
                 }
             } else if (estado == 2){
@@ -486,6 +512,7 @@ public class Regras2 {
                     } else {
                     retorno[0] = 0;
                     retorno[1] = i;
+                    errosSintaticos.add(lista.get(i));
                     return retorno;
                 }
             } else if (estado == 3){
@@ -496,6 +523,7 @@ public class Regras2 {
                 } else {
                     retorno[0] = 0;
                     retorno[1] = i;
+                    errosSintaticos.add(lista.get(i));
                     return retorno;
                 }
             } else if (estado == 4){
@@ -528,6 +556,7 @@ public class Regras2 {
                 } else {
                     retorno[0] = 0;
                     retorno[1] = i;
+                    errosSintaticos.add(lista.get(i));
                     return retorno;
                 }
             } else if (estado == 2){
@@ -536,6 +565,7 @@ public class Regras2 {
                 }else {
                     retorno[0] = 0;
                     retorno[1] = i;
+                    errosSintaticos.add(lista.get(i));
                     return retorno;
                 }
             } else if (estado == 3){
@@ -544,6 +574,7 @@ public class Regras2 {
                 }else {
                     retorno[0] = 0;
                     retorno[1] = i;
+                    errosSintaticos.add(lista.get(i));
                     return retorno;
                 }
             } else if (estado == 4){
@@ -553,6 +584,7 @@ public class Regras2 {
                 }else {
                     retorno[0] = 0;
                     retorno[1] = i;
+                    errosSintaticos.add(lista.get(i));
                     return retorno;
                 }
             } else if(estado == 5){
@@ -565,6 +597,7 @@ public class Regras2 {
                 } else {
                     retorno[0] = 0;
                     retorno[1] = i;
+                    errosSintaticos.add(lista.get(i));
                     return retorno;
                 }
             }
@@ -585,6 +618,7 @@ public class Regras2 {
                 }else {
                     retorno[0] = 0;
                     retorno[1] = i;
+                    errosSintaticos.add(lista.get(i));
                     return retorno;
                 }
             } else if (estado == 2){
@@ -593,6 +627,7 @@ public class Regras2 {
                 }else {
                     retorno[0] = 0;
                     retorno[1] = i;
+                    errosSintaticos.add(lista.get(i));
                     return retorno;
                 }
             }else if (estado == 3){
@@ -612,6 +647,7 @@ public class Regras2 {
                 } else {
                     retorno[0] = 0;
                     retorno[1] = i;
+                    errosSintaticos.add(lista.get(i));
                     return retorno;
                 }
                 
@@ -634,6 +670,7 @@ public class Regras2 {
                 } else {
                     retorno[0] = 0;
                     retorno[1] = i;
+                    errosSintaticos.add(lista.get(i));
                     return retorno;
                 }
             } else if (estado == 2){
@@ -642,6 +679,7 @@ public class Regras2 {
                 }else {
                     retorno[0] = 0;
                     retorno[1] = i;
+                    errosSintaticos.add(lista.get(i));
                     return retorno;
                 }
             } else if (estado == 3){
@@ -652,6 +690,7 @@ public class Regras2 {
                 } else {
                     retorno[0] = 0;
                     retorno[1] = i;
+                    errosSintaticos.add(lista.get(i));
                     return retorno;
                 }
             } else if (estado == 4){
@@ -681,6 +720,7 @@ public class Regras2 {
                 } else {
                     retorno[0] = 0;
                     retorno[1] = i;
+                    errosSintaticos.add(lista.get(i));
                     return retorno;
                 }
             } else if (estado == 2){
@@ -689,6 +729,7 @@ public class Regras2 {
                 }else {
                     retorno[0] = 0;
                     retorno[1] = i;
+                    errosSintaticos.add(lista.get(i));
                     return retorno;
                 }
             } else if (estado == 3){
@@ -699,6 +740,7 @@ public class Regras2 {
                 } else {
                     retorno[0] = 0;
                     retorno[1] = i;
+                    errosSintaticos.add(lista.get(i));
                     return retorno;
                 }
             } else if (estado == 4){
@@ -707,6 +749,7 @@ public class Regras2 {
                 }else {
                     retorno[0] = 0;
                     retorno[1] = i;
+                    errosSintaticos.add(lista.get(i));
                     return retorno;
                 }
             } else if (estado == 5){
@@ -725,6 +768,7 @@ public class Regras2 {
                     } else {
                         retorno[0] = 0;
                         retorno[1] = i;
+                        errosSintaticos.add(lista.get(i));
                         return retorno;
                     }
                 
@@ -750,7 +794,7 @@ public class Regras2 {
     } 
     
     public int [] globalBlock (List <Token> lista, ArrayList <Token> errosSintaticos){
-         int retorno[] = new int [2];
+        int retorno[] = new int [2];
         int estado = 1;
         for (int i = 0; i < lista.size(); i++){
             Token aux = lista.get(i);
@@ -786,6 +830,7 @@ public class Regras2 {
                 } else {
                     retorno[0] = 0;
                     retorno[1] = i;
+                    errosSintaticos.add(lista.get(i));
                     return retorno;
                 } 
             }
