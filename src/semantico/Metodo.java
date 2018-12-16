@@ -1,0 +1,113 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package semantico;
+
+import java.util.ArrayList;
+
+/**
+ *
+ * @author Aloisio
+ */
+public class Metodo {
+    
+    private String nome;
+    private String tipoRetorno;
+    private boolean retornoIsCorrect;
+    private ArrayList<Variavel> variaveis;
+    private ArrayList<Variavel> parametros;
+    private ArrayList <Funcao> funcoes;
+    
+    public Metodo (){
+        this.variaveis =  new ArrayList();
+        this.parametros =  new ArrayList();
+        this.funcoes = new ArrayList();
+    }
+
+    /**
+     * @return the nome
+     */
+    public String getNome() {
+        return nome;
+    }
+
+    /**
+     * @param nome the nome to set
+     */
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    /**
+     * @return the tipoRetorno
+     */
+    public String getTipoRetorno() {
+        return tipoRetorno;
+    }
+
+    /**
+     * @param tipoRetorno the tipoRetorno to set
+     */
+    public void setTipoRetorno(String tipoRetorno) {
+        this.tipoRetorno = tipoRetorno;
+    }
+
+    /**
+     * @return the variaveis
+     */
+    public ArrayList<Variavel> getVariaveis() {
+        return variaveis;
+    }
+
+    /**
+     * @param variaveis the variaveis to set
+     */
+    public void setVariaveis(ArrayList<Variavel> variaveis) {
+        this.variaveis = variaveis;
+    }
+
+    /**
+     * @return the parametros
+     */
+    public ArrayList<Variavel> getParametros() {
+        return parametros;
+    }
+
+    /**
+     * @param parametros the parametros to set
+     */
+    public void setParametros(ArrayList<Variavel> parametros) {
+        this.parametros = parametros;
+    }
+
+    /**
+     * @return the funcoes
+     */
+    public ArrayList <Funcao> getFuncoes() {
+        return funcoes;
+    }
+
+    /**
+     * @param funcoes the funcoes to set
+     */
+    public void setFuncoes(ArrayList <Funcao> funcoes) {
+        this.funcoes = funcoes;
+    }
+
+    /**
+     * @return the retornoIsCorrect
+     */
+    public boolean isRetornoIsCorrect() {
+        return retornoIsCorrect;
+    }
+
+    /**
+     * @param retornoIsCorrect the retornoIsCorrect to set
+     */
+    public void setRetornoIsCorrect(boolean retornoIsCorrect) {
+        this.retornoIsCorrect = retornoIsCorrect;
+    }
+    
+}
