@@ -13,13 +13,14 @@ import java.util.ArrayList;
  */
 public class Classe {
     
+    private String nome;
     private ArrayList<Variavel> variaveis;
     private ArrayList<Metodo> metodos;
-    private Classe heranca;
+    private String herancaString;
+    private int linhaNoCodigo;
     
     public Classe (){
-        this.variaveis = new ArrayList();
-        this.metodos =  new ArrayList();
+
     }
     
     public boolean verificaSeVariavelExiste (String nomeVariavel){
@@ -79,15 +80,43 @@ public class Classe {
     /**
      * @return the heranca
      */
-    public Classe getHeranca() {
-        return heranca;
+    public String getHeranca() {
+        return herancaString;
     }
 
     /**
      * @param heranca the heranca to set
      */
-    public void setHeranca(Classe heranca) {
-        this.heranca = heranca;
+    public void setHeranca(String heranca) {
+        this.herancaString = heranca;
+    }
+
+    /**
+     * @return the linhaNoCodigo
+     */
+    public int getLinhaNoCodigo() {
+        return linhaNoCodigo;
+    }
+
+    /**
+     * @param linhaNoCodigo the linhaNoCodigo to set
+     */
+    public void setLinhaNoCodigo(int linhaNoCodigo) {
+        this.linhaNoCodigo = linhaNoCodigo;
+    }
+
+    /**
+     * @return the nome
+     */
+    public String getNome() {
+        return nome;
+    }
+
+    /**
+     * @param nome the nome to set
+     */
+    public void setNome(String nome) {
+        this.nome = nome;
     }
     
 }

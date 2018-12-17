@@ -15,6 +15,7 @@ public class Variavel {
     private String tipo;
     private String valor;
     private boolean valorIsCorrect;
+    private int linhaNoCodigo;
     
     
     public Variavel (){
@@ -74,6 +75,20 @@ public class Variavel {
      */
     public void setValorIsCorrect(boolean valorIsCorrect) {
         this.valorIsCorrect = valorIsCorrect;
+    }
+
+    /**
+     * @return the linhaNoCodigo
+     */
+    public int getLinhaNoCodigo() {
+        return linhaNoCodigo;
+    }
+
+    /**
+     * @param linhaNoCodigo the linhaNoCodigo to set
+     */
+    public void setLinhaNoCodigo(int linhaNoCodigo) {
+        this.linhaNoCodigo = linhaNoCodigo;
     }
     
     

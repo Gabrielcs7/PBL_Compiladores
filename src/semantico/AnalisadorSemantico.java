@@ -6,6 +6,8 @@
 package semantico;
 
 import java.util.ArrayList;
+import java.util.Stack;
+import lexico.Token;
 
 
 /**
@@ -14,20 +16,113 @@ import java.util.ArrayList;
  */
 public class AnalisadorSemantico {
     
-    private ArrayList <Classe> classes;
-    private ArrayList <Constante> constantes;
+    private ArrayList <Classe> classes = new ArrayList();
+    private ArrayList <Constante> constantes = new ArrayList();
     
     
     
     
     public AnalisadorSemantico (){
-        this.classes = new ArrayList();
-        this.constantes = new ArrayList();
-    }
-    
-    public void classificaEstruturas (){
         
     }
+    
+    public void classificaEstruturas (ArrayList <Token> listaFinal){
+        
+    }
+    
+    // Metodo responsável por fazer a sepação dos termos para a classificação semântica
+    public void classificaClasse (ArrayList <Token> listaFinal){
+        
+        int i, numClasses = 0;
+        
+        for (i=0; i<listaFinal.size(); i++){
+            if (listaFinal.get(i).getTipo().equals("Palavra Reservada") && listaFinal.get(i).getNome().equals("class")){
+                i++;
+                if (listaFinal.get(i).getTipo().equals("Identificador") && listaFinal.get(i).isTemErro() == false){
+                    Classe classe = new Classe();
+                    classe.setNome(listaFinal.get(i).getNome());
+                    ArrayList<Token> auxList = new ArrayList ();
+
+                    i++;
+                    
+                    if (listaFinal.get(i).getNome().equals("extends")){
+                        i++;
+                        if (listaFinal.get(i).isTemErro() == false && listaFinal.get(i).getTipo().equals("Identificador")){
+                            classe.setHeranca(listaFinal.get(i).getNome());
+                            i++;
+                        }
+                    }
+                    
+                    if (listaFinal.get(i).getNome().equals("{")){
+                        i++;
+                    } else {
+                        break;
+                    }
+
+                    while (listaFinal.get(i).getNome().equals("class")){
+                        auxList.add(listaFinal.get(i));
+                        i++;
+                    }
+                    
+                    ArrayList <Variavel> variaveisClasse = new ArrayList ();
+                    
+                    classificaVariavel(auxList, variaveisClasse);
+                    
+                    
+                    //int j = i+1;
+                    /*
+                    int auxInt = 0;
+                    boolean auxFor = false;
+                    Stack pilha = new Stack();
+                    String auxString;
+       
+                    for (int k = j; k<listaFinal.size(); k++){
+                        if (listaFinal.get(k).getNome().equals("(") && listaFinal.get(k).isTemErro() == false){
+                            auxString = (String)pilha.push(listaFinal.get(k).getNome());
+                            auxInt++;
+                        } else {
+                            break;
+                        }
+                        
+                        if (listaFinal.get(k).getNome().equals(")") && listaFinal.get(k).isTemErro() == false){
+                            auxString = (String)pilha.pop();
+                            auxInt--;
+                        } else {
+                            break;
+                        }
+                    }
+                    */
+                    getClasses().add(numClasses, classe);
+                    numClasses++;
+                } else {
+                    break;
+                }
+            } else {
+                break;
+            }
+        }
+        
+    }
+    
+    public void classificaConstante(int i){
+    }
+    
+    public void classificaVariavel(ArrayList <Token> listaAux ,ArrayList <Variavel> variaveis){
+    }
+    
+    public void classificaMetodo(ArrayList <Token> listaAux ,ArrayList <Metodo> metodos){
+    }
+    
+    public void classificaFuncao(int i){
+    }
+    
+    public void classificaExpressao(int i){
+    }
+    
+    public void putMetodosVariaveisPaiFilho (int i){
+    }
+    
+    // Método responsável por fazer a verificação se existe uma constante declarada com o nome recebido em parâmetro
     public boolean verificaSeConstExiste (String nomeConst){
         boolean retorno = false;
         int i;
@@ -41,6 +136,7 @@ public class AnalisadorSemantico {
         return retorno;
     }
     
+    // Verifica o tipo das variáveis e e se o valor delas está de acordo com o tipo
     public void verificaTiposVariaveis(ArrayList <Variavel> variaveis){
         
         int i;
@@ -59,9 +155,11 @@ public class AnalisadorSemantico {
                         auxInt = Integer.parseInt(aux);
                     } catch (NumberFormatException e){
                         variaveis.get(i).setValorIsCorrect(false);
-                    }   if (auxInt!=0){
-                        variaveis.get(i).setValorIsCorrect(true);
-                    }   break;
+                    } finally {
+                        if (auxInt!=0){
+                            variaveis.get(i).setValorIsCorrect(true);
+                        }
+                    } break;
                     
                 case "float":
                     aux = variaveis.get(i).getValor();
@@ -70,14 +168,15 @@ public class AnalisadorSemantico {
                         auxFloat = Float.parseFloat(aux);
                     } catch (NumberFormatException e){
                         variaveis.get(i).setValorIsCorrect(false);
-                    }   if (auxFloat!=0){
-                        variaveis.get(i).setValorIsCorrect(true);
-                    }
-                    break;
+                    } finally {
+                        if (auxFloat!=0){
+                            variaveis.get(i).setValorIsCorrect(true);
+                        }
+                    } break;
                     
                 case "bool":
                     aux = variaveis.get(i).getValor();
-                    if (aux == "false" || aux == "true"){
+                    if (aux.equals("false") || aux.equals("true")){
                         variaveis.get(i).setValorIsCorrect(true);
                     } else {
                         variaveis.get(i).setValorIsCorrect(false);
@@ -111,9 +210,11 @@ public class AnalisadorSemantico {
                         auxInt = Integer.parseInt(aux);
                     } catch (NumberFormatException e){
                         getConstantes().get(i).setIsCorrectValue(false);
-                    }   if (auxInt!=0){
-                        getConstantes().get(i).setIsCorrectValue(true);
-                    }   break;
+                    } finally {
+                        if (auxInt!=0){
+                            getConstantes().get(i).setIsCorrectValue(true);
+                        }
+                    } break;
                     
                 case "float":
                     aux = getConstantes().get(i).getValor();
@@ -122,14 +223,15 @@ public class AnalisadorSemantico {
                         auxFloat = Float.parseFloat(aux);
                     } catch (NumberFormatException e){
                         getConstantes().get(i).setIsCorrectValue(false);
-                    }   if (auxFloat!=0){
-                        getConstantes().get(i).setIsCorrectValue(true);
-                    }
-                    break;
+                    }finally {
+                        if (auxFloat!=0){
+                            getConstantes().get(i).setIsCorrectValue(true);
+                        }
+                    } break;
                     
                 case "bool":
                     aux = getConstantes().get(i).getValor();
-                    if (aux == "false" || aux == "true"){
+                    if (aux.equals("false")|| aux.equals("true")){
                         getConstantes().get(i).setIsCorrectValue(true);
                     } else {
                         getConstantes().get(i).setIsCorrectValue(false);
@@ -145,6 +247,25 @@ public class AnalisadorSemantico {
         }
     }
 
+    public void printConstIncorrectValue (){
+        int i;
+        boolean aux;
+        ArrayList<Constante> constantesIncorretas = new ArrayList();
+        for (i=0; i<getConstantes().size(); i++){
+            aux = false;
+            if (getConstantes().get(i).isIsCorrectValue() == false){
+                aux = constantesIncorretas.add(getConstantes().get(i));
+                if (aux==false){
+                    break;
+                }
+            }
+        }
+        
+        for (i=0; i<constantesIncorretas.size(); i++){
+            System.out.print("A constante '"+constantesIncorretas.get(i).getNome()+"'[LINHA:"+constantesIncorretas.get(i).getLinhaNoCodigo()+"] recebeu um valor diferente do tipo '"+constantesIncorretas.get(i).getTipo()+"'.");
+        }
+        constantesIncorretas.clear();
+    }
     /**
      * @return the classes
      */

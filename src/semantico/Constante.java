@@ -15,6 +15,7 @@ public class Constante {
     private String tipo;
     private String valor;
     private boolean isCorrectValue;
+    private int linhaNoCodigo;
 
     /**
      * @return the nome
@@ -70,6 +71,20 @@ public class Constante {
      */
     public void setIsCorrectValue(boolean isCorrectValue) {
         this.isCorrectValue = isCorrectValue;
+    }
+
+    /**
+     * @return the linhaNoCodigo
+     */
+    public int getLinhaNoCodigo() {
+        return linhaNoCodigo;
+    }
+
+    /**
+     * @param linhaNoCodigo the linhaNoCodigo to set
+     */
+    public void setLinhaNoCodigo(int linhaNoCodigo) {
+        this.linhaNoCodigo = linhaNoCodigo;
     }
     
 }

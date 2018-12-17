@@ -16,8 +16,9 @@ public class Metodo {
     private String nome;
     private String tipoRetorno;
     private boolean retornoIsCorrect;
+    private int linhaNoCodigo;
     private ArrayList<Variavel> variaveis;
-    private ArrayList<Variavel> parametros;
+    private ArrayList parametros;
     private ArrayList <Funcao> funcoes;
     
     public Metodo (){
@@ -71,14 +72,14 @@ public class Metodo {
     /**
      * @return the parametros
      */
-    public ArrayList<Variavel> getParametros() {
+    public ArrayList getParametros() {
         return parametros;
     }
 
     /**
      * @param parametros the parametros to set
      */
-    public void setParametros(ArrayList<Variavel> parametros) {
+    public void setParametros(ArrayList parametros) {
         this.parametros = parametros;
     }
 
@@ -108,6 +109,20 @@ public class Metodo {
      */
     public void setRetornoIsCorrect(boolean retornoIsCorrect) {
         this.retornoIsCorrect = retornoIsCorrect;
+    }
+
+    /**
+     * @return the linhaNoCodigo
+     */
+    public int getLinhaNoCodigo() {
+        return linhaNoCodigo;
+    }
+
+    /**
+     * @param linhaNoCodigo the linhaNoCodigo to set
+     */
+    public void setLinhaNoCodigo(int linhaNoCodigo) {
+        this.linhaNoCodigo = linhaNoCodigo;
     }
     
 }
