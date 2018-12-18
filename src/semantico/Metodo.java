@@ -22,9 +22,6 @@ public class Metodo {
     private ArrayList <Funcao> funcoes;
     
     public Metodo (){
-        this.variaveis =  new ArrayList();
-        this.parametros =  new ArrayList();
-        this.funcoes = new ArrayList();
     }
 
     /**

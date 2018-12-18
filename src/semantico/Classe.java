@@ -20,7 +20,6 @@ public class Classe {
     private int linhaNoCodigo;
     
     public Classe (){
-
     }
     
     public boolean verificaSeVariavelExiste (String nomeVariavel){
