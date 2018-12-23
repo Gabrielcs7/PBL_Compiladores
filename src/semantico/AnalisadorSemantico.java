@@ -6,7 +6,6 @@
 package semantico;
 
 import java.util.ArrayList;
-import java.util.Stack;
 import lexico.Token;
 
 /**
@@ -24,9 +23,12 @@ public class AnalisadorSemantico {
 
     // FUNÇÃO PRINCIPAL, RESPONSAVEL POR EXECUTAR O PRINCIPAL DO SEMANTICO
     public void executaSemantico(ArrayList<Token> listaFinal) {
-        classificaEstruturas(listaFinal);
-        verificaTiposConstante();
-        printConstIncorrectValue();
+        
+        classificaEstruturas(listaFinal); // Constroi as estruturas necessárias para a análise semântica
+        verificaTiposConstante(); // Verifica se as constantes recebem valores de acordo com o seu tipo
+        printConstIncorrectValue(); // Imprime os erros de tipagem-valor das constantes
+        putMetodosVariaveisPaiFilho(); // Altera as classes, colocando os métodos e atributos das classes que herdam de outra, caso exista
+        verificaSeConstEAtribuidaFora(listaFinal);
     }
 
     // Método responsável por fazer a classificação das estruturas pra análise léxica
@@ -277,7 +279,55 @@ public class AnalisadorSemantico {
     public void classificaExpressao(int i) {
     }
 
-    public void putMetodosVariaveisPaiFilho(int i) {
+    // Método responsável por fazer a atribuição de métodos e atributos de classes "filho" que herdam do "pai"
+    public void putMetodosVariaveisPaiFilho() {
+        
+        int i;
+        String stringAux;
+        
+        for (i=0; i<classes.size(); i++){
+            
+            if (!(classes.get(i).getHeranca().isEmpty())){
+                
+                stringAux = classes.get(i).getHeranca();
+                Classe classeAux =  null;
+                int j=0;
+                while (classeAux == null){
+                    if (classes.get(j).getNome().equals(stringAux)){
+                        classeAux = classes.get(j);
+                    }
+                    j++;
+                }
+                // Faz a adição de métodos e variáveis da classe pai para a filha
+                classes.get(i).getVariaveis().addAll(classeAux.getVariaveis());
+                classes.get(i).getMetodos().addAll(classeAux.getMetodos());
+                
+                // Faz verificação se adicionou variáveis e métodos já implementados
+                
+            }
+        }
+    }
+    
+    // Método que verifica se é atribuida um valor a constante fora do campo "const"
+    public void verificaSeConstEAtribuidaFora(ArrayList<Token> listaFinal){
+        
+        int i, j;
+        
+        for (i=0; i<listaFinal.size(); i++){
+            if (listaFinal.get(i).getNome().equals("class")){
+                i++;
+                for (j=i; j<listaFinal.size(); j++){
+                    if (verificaSeConstExiste(listaFinal.get(j).getNome())){
+                        j++;
+                        if (listaFinal.get(j).getNome().equals("=")){
+                            System.out.print("A constante '"+listaFinal.get(j).getNome()+"' está sendo atribuída valor fora do escopo 'const' do arquivo de texto.");
+                            j++;
+                        }
+                    }
+                }
+            }
+        }
+        
     }
 
     // Método responsável por fazer a verificação se existe uma constante declarada com o nome recebido em parâmetro
