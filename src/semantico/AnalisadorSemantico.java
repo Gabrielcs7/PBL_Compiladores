@@ -23,24 +23,26 @@ public class AnalisadorSemantico {
 
     // FUNÇÃO PRINCIPAL, RESPONSAVEL POR EXECUTAR O PRINCIPAL DO SEMANTICO
     public void executaSemantico(ArrayList<Token> listaFinal) {
-        
+
         classificaEstruturas(listaFinal); // Constroi as estruturas necessárias para a análise semântica
         verificaTiposConstante(); // Verifica se as constantes recebem valores de acordo com o seu tipo
         printConstIncorrectValue(); // Imprime os erros de tipagem-valor das constantes
         putMetodosVariaveisPaiFilho(); // Altera as classes, colocando os métodos e atributos das classes que herdam de outra, caso exista
         verificaSeConstEAtribuidaFora(listaFinal);
+
     }
 
     // Método responsável por fazer a classificação das estruturas pra análise léxica
     public void classificaEstruturas(ArrayList<Token> listaFinal) {
 
-        classificaConstante(listaFinal);
-        classificaClasse(listaFinal);
+        criaConstantes(listaFinal);
+
+        criaClasses(listaFinal);
 
     }
 
     // Metodo responsável por fazer a sepação das classes para a classificação semântica
-    public void classificaClasse(ArrayList<Token> listaFinal) {
+    public void criaClasses(ArrayList<Token> listaFinal) {
 
         int i, numClasses = 0;
 
@@ -77,11 +79,13 @@ public class AnalisadorSemantico {
                     i++;
                 }
 
+                i--;
+
                 ArrayList<Variavel> variaveisClasse = new ArrayList();
                 ArrayList<Metodo> metodosClasse = new ArrayList();
 
-                classificaVariavel(auxList, variaveisClasse);
-                classificaMetodo(auxList, metodosClasse);
+                criaVariaveis(auxList, variaveisClasse);
+                criaMetosos(auxList, metodosClasse);
 
                 //int j = i+1;
                 /*
@@ -116,8 +120,8 @@ public class AnalisadorSemantico {
 
     }
 
-    public void classificaConstante(ArrayList<Token> listaFinal) {
-        int i, numClasses = 0;
+    public void criaConstantes(ArrayList<Token> listaFinal) {
+        int i;
 
         for (i = 0; i < listaFinal.size(); i++) {
             if (listaFinal.get(i).getTipo().equals("Palavra Reservada") && listaFinal.get(i).getNome().equals("const")) {
@@ -125,7 +129,7 @@ public class AnalisadorSemantico {
                 Constante constAux = new Constante();
                 if (listaFinal.get(i).getNome().equals("{")) {
                     i++;
-                    while (!listaFinal.get(i).getNome().equals("}") || i < listaFinal.size()) {
+                    while (!listaFinal.get(i).getNome().equals("}") || i < listaFinal.size() || !listaFinal.get(i).getNome().equals("class")) {
                         if (listaFinal.get(i).getTipo().equals("Palavra Reservada") && listaFinal.get(i).getNome().equals("int")) {
                             i++;
                             ArrayList<Constante> listaConstAux = new ArrayList();
@@ -259,7 +263,7 @@ public class AnalisadorSemantico {
 
                         }
                     }
-                    if (listaFinal.get(i).getNome().equals("}") || !(i<listaFinal.size())){
+                    if (listaFinal.get(i).getNome().equals("}") || !(i < listaFinal.size()) || listaFinal.get(i).getNome().equals("class")) {
                         break;
                     }
                 }
@@ -267,10 +271,132 @@ public class AnalisadorSemantico {
         }
     }
 
-    public void classificaVariavel(ArrayList<Token> listaAux, ArrayList<Variavel> variaveis) {
+    public void criaVariaveis(ArrayList<Token> listaAux, ArrayList<Variavel> variaveis) {
+        int i;
+
+        for (i = 0; i < listaAux.size(); i++) {
+            if (listaAux.get(i).getTipo().equals("Palavra Reservada") && listaAux.get(i).getNome().equals("variables")) {
+                i++;
+                if (listaAux.get(i).getNome().equals("{")) {
+                    i++;
+                    while (!listaAux.get(i).getNome().equals("}") || i < listaAux.size() || !listaAux.get(i).getNome().equals("class")) {
+                        if (listaAux.get(i).getTipo().equals("Palavra Reservada") && listaAux.get(i).getNome().equals("int")) {
+                            i++;
+                            while (!listaAux.get(i).getTipo().equals("Palavra Reservada") || listaAux.get(i).getNome().equals(";")) {
+                                String nomeAux;
+                                int linhaNoCodigo;
+                                if (listaAux.get(i).getTipo().equals("Identificador")) {
+                                    nomeAux = listaAux.get(i).getNome();
+                                    linhaNoCodigo = listaAux.get(i).getLinha();
+
+                                    Variavel variavelAux = new Variavel();
+                                    variavelAux.setNome(nomeAux);
+                                    variavelAux.setTipo("int");
+                                    variavelAux.setLinhaNoCodigo(linhaNoCodigo);
+                                    i++;
+
+                                    if (listaAux.get(i).getNome().equals(",")) {
+                                        i++;
+                                        variaveis.add(variavelAux);
+                                    }
+                                    //ATENÇÃO!!!! DEVE SER VERIFICADO SE PODE UMA VIRGULA SEGUIDA DO PONTO-VIRGULA
+                                    if (listaAux.get(i).getNome().equals(";")) {
+                                        variaveis.add(variavelAux);
+                                        break;
+                                    }
+                                }
+                            }
+
+                        } else if (listaAux.get(i).getTipo().equals("Palavra Reservada") && listaAux.get(i).getNome().equals("float")) {
+                            i++;
+                            while (!listaAux.get(i).getTipo().equals("Palavra Reservada") || listaAux.get(i).getNome().equals(";")) {
+                                String nomeAux;
+                                int linhaNoCodigo;
+                                if (listaAux.get(i).getTipo().equals("Identificador")) {
+                                    nomeAux = listaAux.get(i).getNome();
+                                    linhaNoCodigo = listaAux.get(i).getLinha();
+
+                                    Variavel variavelAux = new Variavel();
+                                    variavelAux.setNome(nomeAux);
+                                    variavelAux.setTipo("float");
+                                    variavelAux.setLinhaNoCodigo(linhaNoCodigo);
+                                    i++;
+
+                                    if (listaAux.get(i).getNome().equals(",")) {
+                                        i++;
+                                        variaveis.add(variavelAux);
+                                    }
+                                    //ATENÇÃO!!!! DEVE SER VERIFICADO SE PODE UMA VIRGULA SEGUIDA DO PONTO-VIRGULA
+                                    if (listaAux.get(i).getNome().equals(";")) {
+                                        variaveis.add(variavelAux);
+                                        break;
+                                    }
+                                }
+                            }
+
+                        } else if (listaAux.get(i).getTipo().equals("Palavra Reservada") && listaAux.get(i).getNome().equals("string")) {
+                            i++;
+                            while (!listaAux.get(i).getTipo().equals("Palavra Reservada") || listaAux.get(i).getNome().equals(";")) {
+                                String nomeAux;
+                                int linhaNoCodigo;
+                                if (listaAux.get(i).getTipo().equals("Identificador")) {
+                                    nomeAux = listaAux.get(i).getNome();
+                                    linhaNoCodigo = listaAux.get(i).getLinha();
+
+                                    Variavel variavelAux = new Variavel();
+                                    variavelAux.setNome(nomeAux);
+                                    variavelAux.setTipo("string");
+                                    variavelAux.setLinhaNoCodigo(linhaNoCodigo);
+                                    i++;
+                                    if (listaAux.get(i).getNome().equals(",")) {
+                                        i++;
+                                        variaveis.add(variavelAux);
+                                    }
+                                    //ATENÇÃO!!!! DEVE SER VERIFICADO SE PODE UMA VIRGULA SEGUIDA DO PONTO-VIRGULA
+                                    if (listaAux.get(i).getNome().equals(";")) {
+                                        variaveis.add(variavelAux);
+                                        break;
+                                    }
+                                }
+                            }
+
+                        } else if (listaAux.get(i).getTipo().equals("Palavra Reservada") && listaAux.get(i).getNome().equals("bool")) {
+                            i++;
+                            while (!listaAux.get(i).getTipo().equals("Palavra Reservada") || listaAux.get(i).getNome().equals(";")) {
+                                String nomeAux;
+                                int linhaNoCodigo;
+                                if (listaAux.get(i).getTipo().equals("Identificador")) {
+                                    nomeAux = listaAux.get(i).getNome();
+                                    linhaNoCodigo = listaAux.get(i).getLinha();
+                                    
+                                    Variavel variavelAux = new Variavel();
+                                    variavelAux.setNome(nomeAux);
+                                    variavelAux.setTipo("bool");
+                                    variavelAux.setLinhaNoCodigo(linhaNoCodigo);
+                                    i++;
+                                    if (listaAux.get(i).getNome().equals(",")) {
+                                        i++;
+                                        variaveis.add(variavelAux);
+                                    }
+                                    //ATENÇÃO!!!! DEVE SER VERIFICADO SE PODE UMA VIRGULA SEGUIDA DO PONTO-VIRGULA
+                                    if (listaAux.get(i).getNome().equals(";")) {
+                                        variaveis.add(variavelAux);
+                                        break;
+                                    }
+                                }
+                            }
+
+                        }
+                    }
+                    if (listaAux.get(i).getNome().equals("}") || !(i < listaAux.size()) || listaAux.get(i).getNome().equals("class")) {
+                        break;
+                    }
+                }
+            }
+        }
     }
 
-    public void classificaMetodo(ArrayList<Token> listaAux, ArrayList<Metodo> metodos) {
+    public void criaMetosos(ArrayList<Token> listaAux, ArrayList<Metodo> metodos) {
     }
 
     public void classificaFuncao(int i) {
@@ -281,53 +407,100 @@ public class AnalisadorSemantico {
 
     // Método responsável por fazer a atribuição de métodos e atributos de classes "filho" que herdam do "pai"
     public void putMetodosVariaveisPaiFilho() {
-        
+
         int i;
         String stringAux;
-        
-        for (i=0; i<classes.size(); i++){
-            
-            if (!(classes.get(i).getHeranca().isEmpty())){
-                
+
+        for (i = 0; i < classes.size(); i++) {
+
+            if (!(classes.get(i).getHeranca().isEmpty())) {
+
                 stringAux = classes.get(i).getHeranca();
-                Classe classeAux =  null;
-                int j=0;
-                while (classeAux == null){
-                    if (classes.get(j).getNome().equals(stringAux)){
+                Classe classeAux = null;
+                int j = 0;
+                while (classeAux == null) {
+                    if (classes.get(j).getNome().equals(stringAux)) {
                         classeAux = classes.get(j);
                     }
                     j++;
                 }
                 // Faz a adição de métodos e variáveis da classe pai para a filha
-                classes.get(i).getVariaveis().addAll(classeAux.getVariaveis());
-                classes.get(i).getMetodos().addAll(classeAux.getMetodos());
+                classes.get(i).getVariaveis().addAll(0,classeAux.getVariaveis());
+                classes.get(i).getMetodos().addAll(0,classeAux.getMetodos());
+
+                Variavel auxVariavel;
+                int auxInt = classes.get(i).getVariaveis().size();
                 
-                // Faz verificação se adicionou variáveis e métodos já implementados
+                // Faz verificação se adicionou variáveis já existentes
+                for (int k=0; k<auxInt; k++){
+                    auxVariavel = classes.get(i).getVariaveis().get(k);
+                    int intAux = 0;
+                    while (intAux<auxInt){
+                        String auxString = classes.get(i).getVariaveis().get(intAux).getNome();
+                        if (auxVariavel.getNome().equals(auxString) && k!=intAux){
+                            classes.get(i).getVariaveis().remove(intAux);
+                        } else {
+                            intAux++;
+                        } 
+                    }
+                }
                 
+                // Faz a subescrita e sobrecarga de métodos da classe "mãe" para a classe "filha"
+                Metodo auxMetodo;
+                auxInt = classes.get(i).getMetodos().size();
+                for (int k=0; k<auxInt; k++){
+                    auxMetodo = classes.get(i).getMetodos().get(k);
+                    int intAux = 0;
+                    while (intAux<auxInt){
+                        Metodo auxMetodo2 = classes.get(i).getMetodos().get(intAux);
+                        if (auxMetodo.getNome().equals(auxMetodo2.getNome()) && k!=intAux){
+                            if (auxMetodo2.getTipoRetorno().equals(auxMetodo.getTipoRetorno())){
+                                if (auxMetodo.getParametros().size() == auxMetodo2.getParametros().size()){
+                                    boolean auxBool = true;
+                                    for (int a=0; a<auxMetodo.getParametros().size(); a++){
+                                        if (!auxMetodo.getParametros().get(a).getTipo().equals(auxMetodo2.getParametros().get(a).getTipo())){
+                                            auxBool = false;
+                                            break;
+                                        }
+                                    }
+                                    if (auxBool == true){
+                                        classes.get(i).getMetodos().remove(intAux);
+                                    } else {
+                                    }
+                                }
+                            } else {
+                                // Como só é permitido a sobrecarga com o mesmo nome e tipo de retorno, retira o método que pertence a classe "filha"
+                                classes.get(i).getMetodos().remove(intAux);
+                            }
+                        } else {
+                            intAux++;
+                        }
+                    }
+                }
             }
         }
     }
-    
+
     // Método que verifica se é atribuida um valor a constante fora do campo "const"
-    public void verificaSeConstEAtribuidaFora(ArrayList<Token> listaFinal){
-        
+    public void verificaSeConstEAtribuidaFora(ArrayList<Token> listaFinal) {
+
         int i, j;
-        
-        for (i=0; i<listaFinal.size(); i++){
-            if (listaFinal.get(i).getNome().equals("class")){
+
+        for (i = 0; i < listaFinal.size(); i++) {
+            if (listaFinal.get(i).getNome().equals("class")) {
                 i++;
-                for (j=i; j<listaFinal.size(); j++){
-                    if (verificaSeConstExiste(listaFinal.get(j).getNome())){
+                for (j = i; j < listaFinal.size(); j++) {
+                    if (verificaSeConstExiste(listaFinal.get(j).getNome())) {
                         j++;
-                        if (listaFinal.get(j).getNome().equals("=")){
-                            System.out.print("A constante '"+listaFinal.get(j).getNome()+"' está sendo atribuída valor fora do escopo 'const' do arquivo de texto.");
+                        if (listaFinal.get(j).getNome().equals("=")) {
+                            System.out.print("A constante '" + listaFinal.get(j).getNome() + "' está sendo atribuída valor fora do escopo 'const' do arquivo de texto.");
                             j++;
                         }
                     }
                 }
             }
         }
-        
+
     }
 
     // Método responsável por fazer a verificação se existe uma constante declarada com o nome recebido em parâmetro
@@ -398,6 +571,17 @@ public class AnalisadorSemantico {
 
                 default:
                     break;
+            }
+        }
+
+    }
+
+    public void atribuiValorVariaveis() {
+
+        for (int i = 0; i < getClasses().size(); i++) {
+            int auxNum = getClasses().get(i).getVariaveis().size();
+            while (auxNum != 0) {
+                
             }
         }
 

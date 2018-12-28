@@ -5,6 +5,8 @@
  */
 package semantico;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Aloisio
@@ -13,7 +15,8 @@ public class Variavel {
 
     private String nome;
     private String tipo;
-    private String valor;
+    private ArrayList<String> valor;
+    private Expressao expressaoValor;
     private boolean valorIsCorrect;
     private int linhaNoCodigo;
     
@@ -52,14 +55,14 @@ public class Variavel {
     /**
      * @return the valor
      */
-    public String getValor() {
+    public ArrayList<String> getValor() {
         return valor;
     }
 
     /**
      * @param valor the valor to set
      */
-    public void setValor(String valor) {
+    public void setValor(ArrayList<String> valor) {
         this.valor = valor;
     }
 
@@ -89,6 +92,20 @@ public class Variavel {
      */
     public void setLinhaNoCodigo(int linhaNoCodigo) {
         this.linhaNoCodigo = linhaNoCodigo;
+    }
+
+    /**
+     * @return the expressaoValor
+     */
+    public Expressao getExpressaoValor() {
+        return expressaoValor;
+    }
+
+    /**
+     * @param expressaoValor the expressaoValor to set
+     */
+    public void setExpressaoValor(Expressao expressaoValor) {
+        this.expressaoValor = expressaoValor;
     }
     
     
